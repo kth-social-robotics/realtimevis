@@ -648,15 +648,80 @@ render = function(results) {
 
                         // Head pose
                         if (headposevis == 'yes'){
-                            // Gaze GP3 Glasses 1
+                            // Gaze Head Pose Glasses 1
+                            var g1x = 89;
+                            // Calculate third point in line, given two points
+                            // Point 1
+                            hp1p1x = csvData[index_frame][g1x+6];
+                            hp1p1y = csvData[index_frame][g1x+7];
+                            hp1p1z = csvData[index_frame][g1x+8];
+                            // Point 2
+                            hp1p2x = csvData[index_frame][g1x+3];
+                            hp1p2y = csvData[index_frame][g1x+4];
+                            hp1p2z = csvData[index_frame][g1x+5];
+                            // Point 3 in line
+                            hp1px = hp1p1x + (30 * (hp1p2x - hp1p1x));
+                            hp1py = hp1p1y + (30 * (hp1p2y - hp1p1y));
+                            hp1pz = hp1p1z + (30 * (hp1p2z - hp1p1z));
+
                             // Set the object's markers
-                            hp_pos1 = new THREE.Vector3(g1mc_x + 1, g1mc_y + 1, g1mc_z + 1);
+                            hp_pos1 = new THREE.Vector3(hp1px, hp1py, hp1pz);
                             hpmarker1.position.copy(hp_pos1);
 
                             // Connect markers with a line
-                            hplinegeo1.vertices[0].set(g1mc_x + 1, g1mc_y + 1, g1mc_z + 1);
-                            hplinegeo1.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
+                            hplinegeo1.vertices[0].set(hp1p2x, hp1p2y, hp1p2z);
+                            hplinegeo1.vertices[1].set(hp1px, hp1py, hp1pz);
                             hplinegeo1.verticesNeedUpdate = true;
+
+                            // Gaze Head Pose Glasses 2
+                            var g2x = 101;
+                            // Calculate third point in line, given two points
+                            // Point 1
+                            hp2p1x = csvData[index_frame][g2x+6];
+                            hp2p1y = csvData[index_frame][g2x+7];
+                            hp2p1z = csvData[index_frame][g2x+8];
+                            // Point 2
+                            hp2p2x = csvData[index_frame][g2x+3];
+                            hp2p2y = csvData[index_frame][g2x+4];
+                            hp2p2z = csvData[index_frame][g2x+5];
+                            // Point 3 in line
+                            hp2px = hp2p1x + (30 * (hp2p2x - hp2p1x));
+                            hp2py = hp2p1y + (30 * (hp2p2y - hp2p1y));
+                            hp2pz = hp2p1z + (30 * (hp2p2z - hp2p1z));
+
+                            // Set the object's markers
+                            hp_pos2 = new THREE.Vector3(hp2px, hp2py, hp2pz);
+                            hpmarker2.position.copy(hp_pos2);
+
+                            // Connect markers with a line
+                            hplinegeo2.vertices[0].set(hp2p2x, hp2p2y, hp2p2z);
+                            hplinegeo2.vertices[1].set(hp2px, hp2py, hp2pz);
+                            hplinegeo2.verticesNeedUpdate = true;
+
+                            // Gaze Head Pose Glasses 3
+                            var g3x = 113;
+                            // Calculate third point in line, given two points
+                            // Point 1
+                            hp3p1x = csvData[index_frame][g3x+6];
+                            hp3p1y = csvData[index_frame][g3x+7];
+                            hp3p1z = csvData[index_frame][g3x+8];
+                            // Point 2
+                            hp3p2x = csvData[index_frame][g3x];
+                            hp3p2y = csvData[index_frame][g3x+1];
+                            hp3p2z = csvData[index_frame][g3x+2];
+                            // Point 3 in line
+                            hp3px = hp3p1x + (30 * (hp3p2x - hp3p1x));
+                            hp3py = hp3p1y + (30 * (hp3p2y - hp3p1y));
+                            hp3pz = hp3p1z + (30 * (hp3p2z - hp3p1z));
+
+                            // Set the object's markers
+                            hp_pos3 = new THREE.Vector3(hp3px, hp3py, hp3pz);
+                            hpmarker3.position.copy(hp_pos3);
+
+                            // Connect markers with a line
+                            hplinegeo3.vertices[0].set(hp3p2x, hp3p2y, hp3p2z);
+                            hplinegeo3.vertices[1].set(hp3px, hp3py, hp3pz);
+                            hplinegeo3.verticesNeedUpdate = true;
                         }
                     }
                     // Incrementing to next frame (skipping one)

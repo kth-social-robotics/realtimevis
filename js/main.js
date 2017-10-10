@@ -228,6 +228,36 @@ if (headposevis == 'yes'){
     var hpline1;
     var hpline2;
     var hpline3;
+
+    var hp1p1x = 0;
+    var hp1p1y = 0;
+    var hp1p1z = 0;
+    var hp1p2x = 0;
+    var hp1p2y = 0;
+    var hp1p2z = 0;
+    var hp1px = 0;
+    var hp1py = 0;
+    var hp1pz = 0;
+
+    var hp2p1x = 0;
+    var hp2p1y = 0;
+    var hp2p1z = 0;
+    var hp2p2x = 0;
+    var hp2p2y = 0;
+    var hp2p2z = 0;
+    var hp2px = 0;
+    var hp2py = 0;
+    var hp2pz = 0;
+
+    var hp3p1x = 0;
+    var hp3p1y = 0;
+    var hp3p1z = 0;
+    var hp3p2x = 0;
+    var hp3p2y = 0;
+    var hp3p2z = 0;
+    var hp3px = 0;
+    var hp3py = 0;
+    var hp3pz = 0;
 }
 
 // Light settings
@@ -312,7 +342,6 @@ function asrDataHandler(data) {
     csvASRData = data;
 }
 
-if (appvis == 'yes'){
 // Read app data from csv file
 function parseAppData(dataLocation, callBack) {
     Papa.parse(dataLocation, {
@@ -351,7 +380,6 @@ var csvFurnitureData;
 function furnitureDataHandler(data) {
     // CSV Furniture Data is usable here
     csvFurnitureData = data;
-}
 }
 
 window.onload = initScene();
