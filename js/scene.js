@@ -399,6 +399,40 @@ initScene = function() {
     gp3line3 = new THREE.Line(gp3linegeo3, gp3linematerial);
     scene.add(gp3line3);
 
+    // Head pose
+    if (headposevis == 'yes'){
+        // Head pose markers
+        var dotGeometry = new THREE.Geometry();
+        dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
+        var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
+        hpmarker1 = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hpmarker1);
+        hpmarker2 = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hpmarker2);
+        hpmarker3 = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hpmarker3);
+
+        // Head pose marker line
+        var hplinematerial = new THREE.LineBasicMaterial({
+            color: 0x5CDF95
+        });
+        hplinegeo1 = new THREE.Geometry();
+        hplinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+        hplinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+        hplinegeo2 = new THREE.Geometry();
+        hplinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
+        hplinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
+        hplinegeo3 = new THREE.Geometry();
+        hplinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
+        hplinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
+        hpline1 = new THREE.Line(hplinegeo1, hplinematerial);
+        scene.add(hpline1);
+        hpline2 = new THREE.Line(hplinegeo2, hplinematerial);
+        scene.add(hpline2);
+        hpline3 = new THREE.Line(hplinegeo3, hplinematerial);
+        scene.add(hpline3);
+    }
+
     // Camera movement
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 0, 0);

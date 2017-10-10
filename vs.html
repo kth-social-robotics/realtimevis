@@ -45,6 +45,12 @@
     results = regex.exec(url);
     var appvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
 
+    headposerec = 'headpose';
+    headposerec = headposerec.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + headposerec + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    var headposevis =  decodeURIComponent(results[2].replace(/\+/g, " "));
+
     rec = 'rec';
     rec = rec.replace(/[\[\]]/g, "\\$&");
     regex = new RegExp("[?&]" + rec + "(=([^&#]*)|&|#|$)");
@@ -76,6 +82,7 @@
     var soundvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
 
     console.log("App: " + appvis);
+    console.log("Head pose: " + headposevis);
     console.log("Rec: " + recvis);
     console.log("File: " + filevis);
     console.log("Start time: " + startvis);

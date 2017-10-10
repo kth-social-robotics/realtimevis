@@ -136,6 +136,13 @@ var gp3marker1 = null;
 var gp3marker2 = null;
 var gp3marker3 = null;
 
+// Headpose
+if (headposevis == 'yes'){
+    var hpmarker1 = null;
+    var hpmarker2 = null;
+    var hpmarker3 = null;
+}
+
 // Floor
 var floorMat;
 
@@ -208,6 +215,20 @@ var gp3linegeo3;
 var gp3line1;
 var gp3line2;
 var gp3line3;
+
+// Headpose helper and marker lines
+if (headposevis == 'yes'){
+    var hp_pos1;
+    var hp_pos2;
+    var hp_pos3;
+
+    var hplinegeo1;
+    var hplinegeo2;
+    var hplinegeo3;
+    var hpline1;
+    var hpline2;
+    var hpline3;
+}
 
 // Light settings
 var bulbLuminousPowers = {
