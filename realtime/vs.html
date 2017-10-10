@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Real Time Gaze Visualisation - WebGL</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <style>
+        body {
+            background-color: #000;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        #info {
+            position: absolute;
+            top: 0px; width: 100%;
+            color: #ffffff;
+            padding: 5px;
+            font-family: Monospace;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        a {
+            color: #ff0080;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0080ff;
+        }
+    </style>
+
+    <script>
+    url = window.location.href;
+    startfrom = 'start';
+    startfrom = startfrom.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + startfrom + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    var startvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
+
+    console.log("Start: " + startvis);
+    </script>
+
+    <script type="text/javascript" src="../../libraries/threejs/build/three.min.js"></script>
+    <script type="text/javascript" src="../../libraries/statsjs/build/stats.min.js"></script>
+    <script type="text/javascript" src="../../libraries/papaparse/papaparse.min.js"></script>
+    <script type="text/javascript" src="js/lib/dat.gui.min.js"></script>
+    <script type="text/javascript" src="js/lib/OrbitControls.js"></script>
+    <script type="text/javascript" src="js/lib/Detector.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <div id="info">
+        Real Time Gaze Visualisation<br/>
+        Real world scale (PMI Lab): The lamp is 2 meters from the floor. The floor is 6x5 meters.</br>
+    </div>
+
+    <script type="text/javascript" src="js/scene.js"></script>
+    <script type="text/javascript" src="js/render.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

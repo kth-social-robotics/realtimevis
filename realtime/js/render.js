@@ -76,13 +76,8 @@ render = function(results) {
                         document.body.appendChild(text3);
 
                         // Display text for events
-                        if (appvis == 'yes'){
                         if (Math.abs(timenow - (appStart - recStart)) < 1) {
                             text4.innerHTML = "App started";
-                        }
-                        else {
-                            text4.innerHTML = "-----------";
-                        }
                         }
                         else {
                             text4.innerHTML = "-----------";
@@ -104,7 +99,6 @@ render = function(results) {
                         text7.innerHTML = "P2: " + csvASRData[disp3][2];
                         document.body.appendChild(text7);
 
-                        if (appvis == 'yes'){
                         // App
                         // Calculate csv frame
                         app_frame = Math.floor((csv_frame/12)+5);
@@ -249,10 +243,6 @@ render = function(results) {
                                     scene.add(img[l]);
                                 }
                             }
-                        }
-                        }
-                        else {
-                            scene.add(img1);
                         }
 
                         // Tobii Glasses 1

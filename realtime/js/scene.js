@@ -93,7 +93,6 @@ initScene = function() {
     img1.rotation.y = 1.57;
     //scene.add(img1);
 
-    if (appvis == 'yes'){
     // Empty flat screen
     img2.position.set(-0.212, 0, 0.419);
     img2.rotation.y = 1.57;
@@ -121,7 +120,6 @@ initScene = function() {
     // Rugs screen
     img8.position.set(-0.212, 0, 0.419);
     img8.rotation.y = 1.57;
-    }
 
     // Text 1
     text1.style.position = 'absolute';
@@ -417,28 +415,16 @@ initScene = function() {
     gui.open();
 
     // Call the parsing function and the callback for position data
-    if (appvis == 'yes'){
-        parsePositionData("data/recordings/" + recvis + "/output/" + recvis + "_data" + filevis + ".csv", positionDataHandler);
-    }
-    else {
-        parsePositionData("data/recordings/" + recvis + "/output/" + recvis + "_data_noapp" + filevis + ".csv", positionDataHandler);
-    }
+    parsePositionData("data/recordings/rec12/output/rec12_data" + filevis + ".csv", positionDataHandler);
 
     // Call the parsing function and the callback for ASR data
-    if (appvis == 'yes'){
-        parseASRData("data/recordings/" + recvis + "/asr/" + recvis + ".csv", asrDataHandler);
-    }
-    else {
-        parseASRData("data/recordings/" + recvis + "/asr/" + recvis + "_noapp.csv", asrDataHandler);
-    }
+    parseASRData("data/recordings/rec12/asr/rec12.csv", asrDataHandler);
 
-    if (appvis == 'yes'){
-        // Call the parsing function and the callback for App data
-        parseAppData("data/recordings/" + recvis + "/app/" + recvis + "_final.csv", appDataHandler);
+    // Call the parsing function and the callback for App data
+    parseAppData("data/recordings/rec12/app/rec12_final.csv", appDataHandler);
 
-        // Call the parsing function and the callback for Furniture data
-        parseFurnitureData("data/app/furniture.csv", furnitureDataHandler);
-    }
+    // Call the parsing function and the callback for Furniture data
+    parseFurnitureData("data/recordings/rec12/app/furniture.csv", furnitureDataHandler);
 
     requestAnimationFrame(render);
 };

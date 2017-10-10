@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Real Time Gaze Visualisation - WebGL</title>
+    <title>BR Visualisation - WebGL</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- Code here is compiled and modified by Three JS original examples - threejs.org -->
+    <!-- Web Lights Physical example has been used to add light and texture shadows -->
 
     <style>
         body {
@@ -35,13 +38,49 @@
 
     <script>
     url = window.location.href;
+
+    apprec = 'app';
+    apprec = apprec.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + apprec + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    var appvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
+
+    rec = 'rec';
+    rec = rec.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + rec + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    var recvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
+
+    file = 'file';
+    file = file.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + file + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    var filevis =  decodeURIComponent(results[2].replace(/\+/g, " "));
+
     startfrom = 'start';
     startfrom = startfrom.replace(/[\[\]]/g, "\\$&");
     regex = new RegExp("[?&]" + startfrom + "(=([^&#]*)|&|#|$)");
     results = regex.exec(url);
     var startvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
 
-    console.log("Start: " + startvis);
+    endto = 'end';
+    endto = endto.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + endto + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    var endvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
+
+    sound = 'sound';
+    sound = sound.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + sound + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    var soundvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
+
+    console.log("App: " + appvis);
+    console.log("Rec: " + recvis);
+    console.log("File: " + filevis);
+    console.log("Start time: " + startvis);
+    console.log("End time: " + endvis);
+    console.log("Sound: " + soundvis);
     </script>
 
     <script type="text/javascript" src="../../libraries/threejs/build/three.min.js"></script>
@@ -50,18 +89,35 @@
     <script type="text/javascript" src="js/lib/dat.gui.min.js"></script>
     <script type="text/javascript" src="js/lib/OrbitControls.js"></script>
     <script type="text/javascript" src="js/lib/Detector.js"></script>
+
+    <!-- wavesurfer.js -->
+    <script src="../../libraries/wavesurfer/dist/wavesurfer.min.js"></script>
+    <script src="../../libraries/wavesurfer/dist/plugin/wavesurfer.timeline.min.js"></script>
 </head>
 
 <body>
     <div id="container"></div>
     <div id="info">
-        Real Time Gaze Visualisation<br/>
+        BR Visualisation<br/>
         Real world scale (PMI Lab): The lamp is 2 meters from the floor. The floor is 6x5 meters.</br>
     </div>
 
+    <script type="text/javascript" src="js/wavesurfer.js"></script>
     <script type="text/javascript" src="js/scene.js"></script>
     <script type="text/javascript" src="js/render.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- wavesurfer.js -->
+    <div class="container">
+        <div id="demo">
+            <div id="waveform">
+                <div class="progress progress-striped active" id="progress-bar">
+                    <div class="progress-bar progress-bar-info"></div>
+                </div>
+            </div>
+            <div id="wave-timeline"></div>
+        </div>
+    </div>
 </body>
 
 </html>
