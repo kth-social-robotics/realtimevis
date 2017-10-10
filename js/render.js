@@ -649,31 +649,14 @@ render = function(results) {
                         // Head pose
                         if (headposevis == 'yes'){
                             // Gaze GP3 Glasses 1
-                            var g1gp3x = 131;
-                            // Check if the Gaze GP3 first row has values or not
-                            if (!csvData[index_frame][g1gp3x]) { // x from object position
-                                // Set the object's markers
-                                gp3_pos1 = new THREE.Vector3(0, 0, 0);
-                                gp3marker1.position.copy(gp3_pos1);
+                            // Set the object's markers
+                            hp_pos1 = new THREE.Vector3(g1mc_x + 1, g1mc_y + 1, g1mc_z + 1);
+                            hpmarker1.position.copy(hp_pos1);
 
-                                // Console log position and rotation
-                                //console.log("No gp3 for glasses 1 found");
-                            }
-                            // Check if the Gaze GP3 row has values or not
-                            else if (csvData[index_frame][g1gp3x]) { // x from marker position
-                                // Set the object's markers
-                                gp3_pos1 = new THREE.Vector3(csvData[index_frame][g1gp3x], csvData[index_frame][g1gp3x+1], csvData[index_frame][g1gp3x+2]);
-                                gp3marker1.position.copy(gp3_pos1);
-
-                                // Connect markers with a line
-                                gp3linegeo1.vertices[0].set(csvData[index_frame][g1gp3x], csvData[index_frame][g1gp3x+1], csvData[index_frame][g1gp3x+2]);
-                                gp3linegeo1.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
-                                gp3linegeo1.verticesNeedUpdate = true;
-                            }
-                            else {
-                                // Console log position and rotation (unknown)
-                                //console.log("GP3 Glasses 1 Position: Unknown");
-                            }
+                            // Connect markers with a line
+                            hplinegeo1.vertices[0].set(g1mc_x + 1, g1mc_y + 1, g1mc_z + 1);
+                            hplinegeo1.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
+                            hplinegeo1.verticesNeedUpdate = true;
                         }
                     }
                     // Incrementing to next frame (skipping one)
