@@ -557,6 +557,10 @@ render = function(results) {
                         sm4_pos = new THREE.Vector3(csvData[6][86], csvData[6][87], csvData[6][88]);
                         smarker4.position.copy(sm4_pos);
 
+                        // Screen central markers
+                        sm_pos = new THREE.Vector3((csvData[6][80] + csvData[6][86]) / 2, (csvData[6][81] + csvData[6][87]) / 2, (csvData[6][82] + csvData[6][88]) / 2);
+                        smarker.position.copy(sm_pos);
+
                         // Connect markers with a line
                         slinegeo.vertices[0].set(csvData[6][77], csvData[6][78], csvData[6][79]);
                         slinegeo.vertices[1].set(csvData[6][80], csvData[6][81], csvData[6][82]);

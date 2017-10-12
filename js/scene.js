@@ -350,6 +350,8 @@ initScene = function() {
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
+    smarker = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(smarker);
     smarker1 = new THREE.Points(dotGeometry, dotMaterial);
     scene.add(smarker1);
     smarker2 = new THREE.Points(dotGeometry, dotMaterial);

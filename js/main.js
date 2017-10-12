@@ -126,6 +126,7 @@ var lh2marker3 = null;
 var lh2marker4 = null;
 
 // Screen
+var smarker = null;
 var smarker1 = null;
 var smarker2 = null;
 var smarker3 = null;
@@ -187,7 +188,7 @@ var rh2m1_pos, rh2m2_pos, rh2m3_pos, rh2m4_pos;
 var lh2m1_pos, lh2m2_pos, lh2m3_pos, lh2m4_pos;
 
 // Screen helper
-var sm1_pos, sm2_pos, sm3_pos, sm4_pos;
+var sm_pos, sm1_pos, sm2_pos, sm3_pos, sm4_pos;
 
 // Gloves Marker Lines
 var lh1linegeo;
