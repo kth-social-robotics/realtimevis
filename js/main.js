@@ -231,6 +231,16 @@ if (headposevis == 'yes'){
     var hpline3;
 }
 
+// Refpoint marker lines
+if (refvis == 'yes'){
+    var reflinegeo1;
+    var reflinegeo2;
+    var reflinegeo3;
+    var refline1;
+    var refline2;
+    var refline3;
+}
+
 // Light settings
 var bulbLuminousPowers = {
     "110000 lm (1000W)": 110000,

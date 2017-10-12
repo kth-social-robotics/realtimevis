@@ -426,7 +426,7 @@ initScene = function() {
             linewidth: 3
         });
         var hplinematerial2 = new THREE.LineBasicMaterial({
-            color: 0x000000,//   0x0000ff
+            color: 0x000000,
             linewidth: 3
         });
         var hplinematerial3 = new THREE.LineBasicMaterial({
@@ -448,6 +448,30 @@ initScene = function() {
         scene.add(hpline2);
         hpline3 = new THREE.Line(hplinegeo3, hplinematerial3);
         scene.add(hpline3);
+    }
+
+    // Ref point
+    if (refvis == 'yes'){
+        // Ref point line
+        var reflinematerial = new THREE.LineBasicMaterial({
+            color: 0xFFCC00,
+            linewidth: 3
+        });
+        reflinegeo1 = new THREE.Geometry();
+        reflinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo2 = new THREE.Geometry();
+        reflinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo3 = new THREE.Geometry();
+        reflinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
+        refline1 = new THREE.Line(reflinegeo1, reflinematerial);
+        scene.add(refline1);
+        refline2 = new THREE.Line(reflinegeo2, reflinematerial);
+        scene.add(refline2);
+        refline3 = new THREE.Line(reflinegeo3, reflinematerial);
+        scene.add(refline3);
     }
 
     // Camera movement

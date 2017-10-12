@@ -51,6 +51,12 @@
     results = regex.exec(url);
     var headposevis =  decodeURIComponent(results[2].replace(/\+/g, " "));
 
+    refrec = 'refpoint';
+    refrec = refrec.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + refrec + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    var refvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
+
     rec = 'rec';
     rec = rec.replace(/[\[\]]/g, "\\$&");
     regex = new RegExp("[?&]" + rec + "(=([^&#]*)|&|#|$)");
@@ -83,6 +89,7 @@
 
     console.log("App: " + appvis);
     console.log("Head pose: " + headposevis);
+    console.log("Reference point: " + refvis);
     console.log("Rec: " + recvis);
     console.log("File: " + filevis);
     console.log("Start time: " + startvis);
