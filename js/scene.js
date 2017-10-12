@@ -217,13 +217,15 @@ initScene = function() {
     // Glasses marker line
     var glinematerial1 = new THREE.LineBasicMaterial({
         color: 0xFFFFFF,
-        linewidth: 4 //this does not work at the moment
+        linewidth: 3
     });
     var glinematerial2 = new THREE.LineBasicMaterial({
-        color: 0x000000
+        color: 0x000000,
+        linewidth: 3
     });
     var glinematerial3 = new THREE.LineBasicMaterial({
-        color: 0x0000ff
+        color: 0x0000ff,
+        linewidth: 3
     });
     glinegeo1 = new THREE.Geometry();
     glinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
@@ -304,10 +306,12 @@ initScene = function() {
 
     // Hands marker line
     var hlinematerial1 = new THREE.LineBasicMaterial({
-        color: 0x000000
+        color: 0x0000ff,
+        linewidth: 3
     });
     var hlinematerial2 = new THREE.LineBasicMaterial({
-        color: 0x0000ff
+        color: 0x000000,
+        linewidth: 3
     });
     lh1linegeo = new THREE.Geometry();
     lh1linegeo.vertices.push(new THREE.Vector3(0, 0, 0));
@@ -357,7 +361,8 @@ initScene = function() {
 
     // Screen marker line
     var slinematerial = new THREE.LineBasicMaterial({
-        color: 0xFFCC00
+        color: 0xFFCC00,
+        linewidth: 3
     });
     slinegeo = new THREE.Geometry();
     slinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
@@ -381,7 +386,8 @@ initScene = function() {
 
     // GP3 marker line
     var gp3linematerial = new THREE.LineBasicMaterial({
-        color: 0xCC0000
+        color: 0xCC0000,
+        linewidth: 3
     });
     gp3linegeo1 = new THREE.Geometry();
     gp3linegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
@@ -413,8 +419,17 @@ initScene = function() {
         scene.add(hpmarker3);
 
         // Head pose marker line
-        var hplinematerial = new THREE.LineBasicMaterial({
-            color: 0x5CDF95
+        var hplinematerial1 = new THREE.LineBasicMaterial({
+            color: 0xFFFFFF,
+            linewidth: 3
+        });
+        var hplinematerial2 = new THREE.LineBasicMaterial({
+            color: 0x000000,//   0x0000ff
+            linewidth: 3
+        });
+        var hplinematerial3 = new THREE.LineBasicMaterial({
+            color: 0x0000ff,
+            linewidth: 3
         });
         hplinegeo1 = new THREE.Geometry();
         hplinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
@@ -425,11 +440,11 @@ initScene = function() {
         hplinegeo3 = new THREE.Geometry();
         hplinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
         hplinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
-        hpline1 = new THREE.Line(hplinegeo1, hplinematerial);
+        hpline1 = new THREE.Line(hplinegeo1, hplinematerial1);
         scene.add(hpline1);
-        hpline2 = new THREE.Line(hplinegeo2, hplinematerial);
+        hpline2 = new THREE.Line(hplinegeo2, hplinematerial2);
         scene.add(hpline2);
-        hpline3 = new THREE.Line(hplinegeo3, hplinematerial);
+        hpline3 = new THREE.Line(hplinegeo3, hplinematerial3);
         scene.add(hpline3);
     }
 
