@@ -485,7 +485,7 @@ initScene = function() {
         refmarker4 = new THREE.Points(dotGeometry, dotMaterial);
         scene.add(refmarker4);
 
-        // Screen marker line
+        // Ref Screen marker line
         var reflinematerial = new THREE.LineBasicMaterial({
             color: 0xFFCC00,
             linewidth: 3
@@ -498,6 +498,23 @@ initScene = function() {
         reflinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
         refline = new THREE.Line(reflinegeo, reflinematerial);
         scene.add(refline);
+
+        var dotGeometry = new THREE.Geometry();
+        dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
+        var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
+        refmarkerc = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(refmarkerc);
+
+        // Ref screen point line
+        var refclinematerial = new THREE.LineBasicMaterial({
+            color: 0xFFCC00,
+            linewidth: 3
+        });
+        reflinegeoc = new THREE.Geometry();
+        reflinegeoc.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeoc.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinec = new THREE.Line(reflinegeoc, refclinematerial);
+        scene.add(reflinec);
     }
 
     // Camera movement

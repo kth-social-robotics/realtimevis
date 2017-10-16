@@ -557,7 +557,7 @@ render = function(results) {
                         sm4_pos = new THREE.Vector3(csvData[6][86], csvData[6][87], csvData[6][88]);
                         smarker4.position.copy(sm4_pos);
 
-                        // Screen central markers
+                        // Screen central marker
                         sm_pos = new THREE.Vector3((csvData[6][80] + csvData[6][86]) / 2, (csvData[6][81] + csvData[6][87]) / 2, (csvData[6][82] + csvData[6][88]) / 2);
                         smarker.position.copy(sm_pos);
 
@@ -751,6 +751,14 @@ render = function(results) {
                             reflinegeo.vertices[3].set((csvData[6][83] + csvData[6][86]) / 2, ((csvData[6][84] + csvData[6][87]) / 2) + 0.75, (csvData[6][85] + csvData[6][88]) / 2);
                             reflinegeo.vertices[4].set((csvData[6][83] + csvData[6][86]) / 2, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
                             reflinegeo.verticesNeedUpdate = true;
+
+                            // Reference Screen central marker
+                            ref_posc = new THREE.Vector3(((csvData[6][83] + csvData[6][86]) / 2) + 1, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
+                            refmarkerc.position.copy(ref_posc);
+
+                            reflinegeoc.vertices[0].set(g1mc_x, g1mc_y, g1mc_z);
+                            reflinegeoc.vertices[1].set(((csvData[6][83] + csvData[6][86]) / 2) + 1, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
+                            reflinegeoc.verticesNeedUpdate = true;
                         }
 
                         // Calculate angles
