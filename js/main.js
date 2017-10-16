@@ -144,6 +144,14 @@ if (headposevis == 'yes'){
     var hpmarker3 = null;
 }
 
+// Reference plain
+if (refvis == '1'){
+    var refmarker1 = null;
+    var refmarker2 = null;
+    var refmarker3 = null;
+    var refmarker4 = null;
+}
+
 // Floor
 var floorMat;
 
@@ -232,13 +240,21 @@ if (headposevis == 'yes'){
 }
 
 // Refpoint marker lines
-if (refvis == 'yes'){
-    var reflinegeo1;
-    var reflinegeo2;
-    var reflinegeo3;
-    var refline1;
-    var refline2;
-    var refline3;
+if (refvis == '1'){
+    // var reflinegeo1;
+    // var reflinegeo2;
+    // var reflinegeo3;
+    // var refline1;
+    // var refline2;
+    // var refline3;
+
+    var ref_pos1;
+    var ref_pos2;
+    var ref_pos3;
+    var ref_pos4;
+
+    var reflinegeo;
+    var refline;
 }
 
 // Light settings

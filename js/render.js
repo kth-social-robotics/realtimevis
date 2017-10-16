@@ -714,24 +714,43 @@ render = function(results) {
                         }
 
                         // Reference point
-                        if (refvis == 'yes'){
-                            // Refpoint Glasses 1
-                            // Connect glasses marker and screen marker with a line
-                            reflinegeo1.vertices[0].set((csvData[6][80] + csvData[6][86]) / 2, (csvData[6][81] + csvData[6][87]) / 2, (csvData[6][82] + csvData[6][88]) / 2);
-                            reflinegeo1.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
-                            reflinegeo1.verticesNeedUpdate = true;
-
-                            // // Refpoint Glasses 2
+                        if (refvis == '1'){
+                            // // Refpoint Glasses 1
                             // // Connect glasses marker and screen marker with a line
-                            // reflinegeo2.vertices[0].set((csvData[6][80] + csvData[6][86]) / 2, (csvData[6][81] + csvData[6][87]) / 2, (csvData[6][82] + csvData[6][88]) / 2);
-                            // reflinegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
-                            // reflinegeo2.verticesNeedUpdate = true;
+                            // reflinegeo1.vertices[0].set((csvData[6][80] + csvData[6][86]) / 2, (csvData[6][81] + csvData[6][87]) / 2, (csvData[6][82] + csvData[6][88]) / 2);
+                            // reflinegeo1.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
+                            // reflinegeo1.verticesNeedUpdate = true;
                             //
-                            // // Refpoint Glasses 3
-                            // // Connect glasses marker and screen marker with a line
-                            // reflinegeo3.vertices[0].set((csvData[6][80] + csvData[6][86]) / 2, (csvData[6][81] + csvData[6][87]) / 2, (csvData[6][82] + csvData[6][88]) / 2);
-                            // reflinegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
-                            // reflinegeo3.verticesNeedUpdate = true;
+                            // // // Refpoint Glasses 2
+                            // // // Connect glasses marker and screen marker with a line
+                            // // reflinegeo2.vertices[0].set((csvData[6][80] + csvData[6][86]) / 2, (csvData[6][81] + csvData[6][87]) / 2, (csvData[6][82] + csvData[6][88]) / 2);
+                            // // reflinegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
+                            // // reflinegeo2.verticesNeedUpdate = true;
+                            // //
+                            // // // Refpoint Glasses 3
+                            // // // Connect glasses marker and screen marker with a line
+                            // // reflinegeo3.vertices[0].set((csvData[6][80] + csvData[6][86]) / 2, (csvData[6][81] + csvData[6][87]) / 2, (csvData[6][82] + csvData[6][88]) / 2);
+                            // // reflinegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
+                            // // reflinegeo3.verticesNeedUpdate = true;
+
+                            // Ref Screen (hardcoded take only first line)
+                            // Set the object's markers
+                            ref1_pos = new THREE.Vector3((csvData[6][83] + csvData[6][86]) / 2, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
+                            refmarker1.position.copy(ref1_pos);
+                            ref2_pos = new THREE.Vector3((csvData[6][73] + csvData[6][80]) / 2, (csvData[6][78] + csvData[6][81]) / 2, (csvData[6][79] + csvData[6][82]) / 2);
+                            refmarker2.position.copy(ref2_pos);
+                            ref3_pos = new THREE.Vector3((csvData[6][83] + csvData[6][86]) / 2, ((csvData[6][84] + csvData[6][87]) / 2) + 0.75, (csvData[6][85] + csvData[6][88]) / 2);
+                            refmarker3.position.copy(ref3_pos);
+                            ref4_pos = new THREE.Vector3((csvData[6][73] + csvData[6][80]) / 2, ((csvData[6][78] + csvData[6][81]) / 2) + 0.75, (csvData[6][79] + csvData[6][82]) / 2);
+                            refmarker4.position.copy(ref4_pos);
+
+                            // Connect markers with a line
+                            reflinegeo.vertices[0].set((csvData[6][83] + csvData[6][86]) / 2, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
+                            reflinegeo.vertices[1].set((csvData[6][73] + csvData[6][80]) / 2, (csvData[6][78] + csvData[6][81]) / 2, (csvData[6][79] + csvData[6][82]) / 2);
+                            reflinegeo.vertices[2].set((csvData[6][73] + csvData[6][80]) / 2, ((csvData[6][78] + csvData[6][81]) / 2) + 0.75, (csvData[6][79] + csvData[6][82]) / 2);
+                            reflinegeo.vertices[3].set((csvData[6][83] + csvData[6][86]) / 2, ((csvData[6][84] + csvData[6][87]) / 2) + 0.75, (csvData[6][85] + csvData[6][88]) / 2);
+                            reflinegeo.vertices[4].set((csvData[6][83] + csvData[6][86]) / 2, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
+                            reflinegeo.verticesNeedUpdate = true;
                         }
 
                         // Calculate angles
