@@ -472,7 +472,7 @@ initScene = function() {
     gui.open();
 
     // Call the parsing function and the callback for position data
-    parsePositionData("data/recordings/" + recvis + "/output/" + recvis + "_data.csv", positionDataHandler);
+    parsePositionData("data/recordings/pilot/output/" + recvis + "_data.csv", positionDataHandler);
 
     requestAnimationFrame(render);
 };
