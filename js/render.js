@@ -752,6 +752,34 @@ render = function(results) {
                             reflinegeo.vertices[4].set((csvData[6][83] + csvData[6][86]) / 2, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
                             reflinegeo.verticesNeedUpdate = true;
 
+                            // Find normal vector of the plane
+                            plx1 = (csvData[6][83] + csvData[6][86]) / 2;
+                            ply1 = (csvData[6][84] + csvData[6][87]) / 2;
+                            plz1 = (csvData[6][85] + csvData[6][88]) / 2;
+                            plane1 = [plx1, ply1, plz1];
+                            plane1v = new THREE.Vector3(plx1, ply1, plz1);
+                            plx2 = (csvData[6][73] + csvData[6][80]) / 2;
+                            ply2 = (csvData[6][78] + csvData[6][81]) / 2;
+                            plz2 = (csvData[6][79] + csvData[6][82]) / 2;
+                            plane2 = [plx2, ply2, plz2];
+                            plane2v = new THREE.Vector3(plx2, ply2, plz2);
+                            plx3 = (csvData[6][73] + csvData[6][80]) / 2;
+                            ply3 = ((csvData[6][78] + csvData[6][81]) / 2) + 0.75;
+                            plz3 = (csvData[6][79] + csvData[6][82]) / 2;
+                            plane3 = [plx3, ply3, plz3];
+                            plane3v = new THREE.Vector3(plx3, ply3, plz3);
+
+                            plnx = (ply2 - ply1) * (plz3 - plz1) - (plz2 - plz1) * (ply3 - ply1);
+                            plny = (plz2 - plz1) * (plx3 - plx1) - (plx2 - plx1) * (plz3 - plz1);
+                            plnz = (plx2 - plx1) * (ply3 - ply1) - (ply2 - ply1) * (plx3 - plx1);
+
+                            pln1 = plane2v.sub(plane1v);
+                            pln2 = plane3v.sub(plane1v);
+                            pln = math.cross([pln1.x, pln1.y, pln1.z], [pln2.x, pln2.y, pln2.z]);
+                            console.log(pln);
+
+                            
+
                             // Reference Screen central marker
                             ref_posc = new THREE.Vector3(((csvData[6][83] + csvData[6][86]) / 2) + 1, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
                             refmarkerc.position.copy(ref_posc);
