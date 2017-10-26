@@ -752,7 +752,7 @@ render = function(results) {
                             reflinegeo.vertices[4].set((csvData[6][83] + csvData[6][86]) / 2, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
                             reflinegeo.verticesNeedUpdate = true;
 
-                            // Find normal vector of the plane
+                            // Define plane points
                             plx1 = (csvData[6][83] + csvData[6][86]) / 2;
                             ply1 = (csvData[6][84] + csvData[6][87]) / 2;
                             plz1 = (csvData[6][85] + csvData[6][88]) / 2;
@@ -769,23 +769,49 @@ render = function(results) {
                             plane3 = [plx3, ply3, plz3];
                             plane3v = new THREE.Vector3(plx3, ply3, plz3);
 
-                            plnx = (ply2 - ply1) * (plz3 - plz1) - (plz2 - plz1) * (ply3 - ply1);
-                            plny = (plz2 - plz1) * (plx3 - plx1) - (plx2 - plx1) * (plz3 - plz1);
-                            plnz = (plx2 - plx1) * (ply3 - ply1) - (ply2 - ply1) * (plx3 - plx1);
+                            //plnx = (ply2 - ply1) * (plz3 - plz1) - (plz2 - plz1) * (ply3 - ply1);
+                            //plny = (plz2 - plz1) * (plx3 - plx1) - (plx2 - plx1) * (plz3 - plz1);
+                            //plnz = (plx2 - plx1) * (ply3 - ply1) - (ply2 - ply1) * (plx3 - plx1);
 
-                            pln1 = plane2v.sub(plane1v);
-                            pln2 = plane3v.sub(plane1v);
+                            // Find normal vector of the plane
+                            // https://stackoverflow.com/questions/8135260/normal-vector-to-a-plane
+                            // n = (p2 - p1) ^ (p3 - p1)
+                            pln1 = new THREE.Vector3();
+                            pln1 = plane2v;
+                            pln1.sub(plane1v);
+                            pln2 = new THREE.Vector3();
+                            pln2 = plane3v;
+                            pln2.sub(plane1v);
                             pln = math.cross([pln1.x, pln1.y, pln1.z], [pln2.x, pln2.y, pln2.z]);
-                            console.log(pln);
+                            plnv = new THREE.Vector3(pln[0], pln[1], pln[2]);
+                            plnv.normalize();
 
-                            
+                            // Calculate point projection
+                            // https://stackoverflow.com/questions/8942950/how-do-i-find-the-orthogonal-projection-of-a-point-onto-a-plane
+                            // The projection of a point q = (x, y, z) onto a plane given by a point p = (a, b, c) and a normal n = (d, e, f) is
+                            // q_proj = q - dot(q - p, n) * n
+                            // This calculation assumes that n is a unit vector
+
+                            // Define points
+                            point_glasses = new THREE.Vector3(g1mc_x, g1mc_y, g1mc_z);
+                            point_plane = new THREE.Vector3(plx1, ply1, plz1);
+                            point_glasses_plane = new THREE.Vector3();
+                            point_glasses_plane.subVectors(point_glasses, point_plane);
+
+                            point_glasses_dot = math.dot([point_glasses_plane.x, point_glasses_plane.y, point_glasses_plane.z], [plnv.x, plnv.y, plnv.z]);
+                            point_glasses_final = new THREE.Vector3();
+                            point_glasses_final = plnv;
+                            point_glasses_final.multiplyScalar(point_glasses_dot);
+
+                            point_proj = new THREE.Vector3();
+                            point_proj.subVectors(point_glasses, point_glasses_final);
 
                             // Reference Screen central marker
-                            ref_posc = new THREE.Vector3(((csvData[6][83] + csvData[6][86]) / 2) + 1, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
+                            ref_posc = new THREE.Vector3(point_proj.x, point_proj.y, point_proj.z);
                             refmarkerc.position.copy(ref_posc);
 
                             reflinegeoc.vertices[0].set(g1mc_x, g1mc_y, g1mc_z);
-                            reflinegeoc.vertices[1].set(((csvData[6][83] + csvData[6][86]) / 2) + 1, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
+                            reflinegeoc.vertices[1].set(point_proj.x, point_proj.y, point_proj.z);
                             reflinegeoc.verticesNeedUpdate = true;
                         }
 
