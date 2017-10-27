@@ -613,10 +613,10 @@ render = function(results) {
                             gp3_pos2 = new THREE.Vector3(csvData[index_frame][g2gp3x], csvData[index_frame][g2gp3x+1], csvData[index_frame][g2gp3x+2]);
                             gp3marker2.position.copy(gp3_pos2);
 
-                            // Connect markers with a line
-                            gp3linegeo2.vertices[0].set(csvData[index_frame][g2gp3x], csvData[index_frame][g2gp3x+1], csvData[index_frame][g2gp3x+2]);
-                            gp3linegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
-                            gp3linegeo2.verticesNeedUpdate = true;
+                            // // Connect markers with a line
+                            // gp3linegeo2.vertices[0].set(csvData[index_frame][g2gp3x], csvData[index_frame][g2gp3x+1], csvData[index_frame][g2gp3x+2]);
+                            // gp3linegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
+                            // gp3linegeo2.verticesNeedUpdate = true;
                         }
                         else {
                             // Console log position and rotation (unknown)
@@ -640,10 +640,10 @@ render = function(results) {
                             gp3_pos3 = new THREE.Vector3(csvData[index_frame][g3gp3x], csvData[index_frame][g3gp3x+1], csvData[index_frame][g3gp3x+2]);
                             gp3marker3.position.copy(gp3_pos3);
 
-                            // Connect markers with a line
-                            gp3linegeo3.vertices[0].set(csvData[index_frame][g3gp3x], csvData[index_frame][g3gp3x+1], csvData[index_frame][g3gp3x+2]);
-                            gp3linegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
-                            gp3linegeo3.verticesNeedUpdate = true;
+                            // // Connect markers with a line
+                            // gp3linegeo3.vertices[0].set(csvData[index_frame][g3gp3x], csvData[index_frame][g3gp3x+1], csvData[index_frame][g3gp3x+2]);
+                            // gp3linegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
+                            // gp3linegeo3.verticesNeedUpdate = true;
                         }
                         else {
                             // Console log position and rotation (unknown)
@@ -686,10 +686,10 @@ render = function(results) {
                                 hp_pos2 = new THREE.Vector3(csvData[index_frame][g2hpx], csvData[index_frame][g2hpx+1], csvData[index_frame][g2hpx+2]);
                                 hpmarker2.position.copy(hp_pos2);
 
-                                // Connect markers with a line
-                                hplinegeo2.vertices[0].set(csvData[index_frame][g2hpx], csvData[index_frame][g2hpx+1], csvData[index_frame][g2hpx+2]);
-                                hplinegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
-                                hplinegeo2.verticesNeedUpdate = true;
+                                // // Connect markers with a line
+                                // hplinegeo2.vertices[0].set(csvData[index_frame][g2hpx], csvData[index_frame][g2hpx+1], csvData[index_frame][g2hpx+2]);
+                                // hplinegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
+                                // hplinegeo2.verticesNeedUpdate = true;
                             }
 
                             // Gaze Head pose Glasses 3
@@ -706,10 +706,10 @@ render = function(results) {
                                 hp_pos3 = new THREE.Vector3(csvData[index_frame][g3hpx], csvData[index_frame][g3hpx+1], csvData[index_frame][g3hpx+2]);
                                 hpmarker3.position.copy(hp_pos3);
 
-                                // Connect markers with a line
-                                hplinegeo3.vertices[0].set(csvData[index_frame][g3hpx], csvData[index_frame][g3hpx+1], csvData[index_frame][g3hpx+2]);
-                                hplinegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
-                                hplinegeo3.verticesNeedUpdate = true;
+                                // // Connect markers with a line
+                                // hplinegeo3.vertices[0].set(csvData[index_frame][g3hpx], csvData[index_frame][g3hpx+1], csvData[index_frame][g3hpx+2]);
+                                // hplinegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
+                                // hplinegeo3.verticesNeedUpdate = true;
                             }
                         }
 
