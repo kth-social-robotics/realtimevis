@@ -821,51 +821,106 @@ render = function(results) {
                             gazeref_pos = new THREE.Vector3(intersectedgaze[0], intersectedgaze[1], intersectedgaze[2]);
                             gazerefmarker.position.copy(gazeref_pos);
 
-                            // // Vector glasses to refpoint
-                            // vgr1 = [refx - g1mc_x, refy - g1mc_y, refz - g1mc_z];
-                            // // The dot product of vgr and vgh is a function of the cosine of the angle between them
-                            // // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
-                            // vgr1mag = Math.sqrt((vgr1[0] * vgr1[0]) + (vgr1[1] * vgr1[1]) + (vgr1[2] * vgr1[2]));
-                            // vgr1norm = [vgr1[0] / vgr1mag, vgr1[1] / vgr1mag, vgr1[2] / vgr1mag];
-                            //
-                            // // Head pose to reference point
-                            // // Head pose x, y, z
-                            // var hp1x = csvData[index_frame][g1hpx];
-                            // var hp1y = csvData[index_frame][g1hpx+1];
-                            // var hp1z = csvData[index_frame][g1hpx+2];
-                            // // Vector glasses to head pose
-                            // vgh1 = [hp1x - g1mc_x, hp1y - g1mc_y, hp1z - g1mc_z];
-                            // // The dot product of vgr and vgh is a function of the cosine of the angle between them
-                            // // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
-                            // vgh1mag = Math.sqrt((vgh1[0] * vgh1[0]) + (vgh1[1] * vgh1[1]) + (vgh1[2] * vgh1[2]));
-                            // vgh1norm = [vgh1[0] / vgh1mag, vgh1[1] / vgh1mag, vgh1[2] / vgh1mag];
-                            // // Then calculate the dot product
-                            // resh1 = (vgr1norm[0] * vgh1norm[0]) + (vgr1norm[1] * vgh1norm[1]) + (vgr1norm[2] * vgh1norm[2]);
-                            // // Recover the angle
-                            // angleh1 = Math.acos(resh1);
-                            // // Angle in degrees
-                            // angleh1deg = angleh1 * (180 / Math.PI);
-                            //
-                            // // Gaze to reference point
-                            // // Gaze x, y, z
-                            // var gr1x = csvData[index_frame][g1gp3x];
-                            // var gr1y = csvData[index_frame][g1gp3x+1];
-                            // var gr1z = csvData[index_frame][g1gp3x+2];
-                            // // Vector glasses to gp3
-                            // vgg1 = [gr1x - g1mc_x, gr1y - g1mc_y, gr1z - g1mc_z];
-                            // // The dot product of vgr and vgh is a function of the cosine of the angle between them
-                            // // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
-                            // vgg1mag = Math.sqrt((vgg1[0] * vgg1[0]) + (vgg1[1] * vgg1[1]) + (vgg1[2] * vgg1[2]));
-                            // vgg1norm = [vgg1[0] / vgg1mag, vgg1[1] / vgg1mag, vgg1[2] / vgg1mag];
-                            // // Then calculate the dot product
-                            // resg1 = (vgr1norm[0] * vgg1norm[0]) + (vgr1norm[1] * vgg1norm[1]) + (vgr1norm[2] * vgg1norm[2]);
-                            // // Recover the angle
-                            // angleg1 = Math.acos(resg1);
-                            // // Angle in degrees
-                            // angleg1deg = angleg1 * (180 / Math.PI);
-                            //
-                            // console.log("Head pose 1 angle: ", angleh1deg);
-                            // console.log("Gaze 1 angle: ", angleg1deg);
+                            // Reference Screen head to proj interesection marker
+                            // Take the mid of the x points, the point_proj y and the intersected z
+                            headprojx = (point_proj.x + intersectedhead[0]) / 2;
+                            headprojy = point_proj.y;
+                            headprojz = intersectedhead[2];
+                            headprojref_pos = new THREE.Vector3(headprojx, headprojy, headprojz);
+                            headprojrefmarker.position.copy(headprojref_pos);
+
+                            // Reference Screen gaze to proj interesection marker
+                            // Take the mid of the x points, the point_proj y and the intersected z
+                            gazeprojx = (point_proj.x + intersectedgaze[0]) / 2;
+                            gazeprojy = point_proj.y;
+                            gazeprojz = intersectedgaze[2];
+                            gazeprojref_pos = new THREE.Vector3(gazeprojx, gazeprojy, gazeprojz);
+                            gazeprojrefmarker.position.copy(gazeprojref_pos);
+
+                            // Calculate angles
+                            // Vector glasses to refpoint
+                            vgr1 = [point_proj.x - g1mc_x, point_proj.y - g1mc_y, point_proj.z - g1mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgr1mag = Math.sqrt((vgr1[0] * vgr1[0]) + (vgr1[1] * vgr1[1]) + (vgr1[2] * vgr1[2]));
+                            vgr1norm = [vgr1[0] / vgr1mag, vgr1[1] / vgr1mag, vgr1[2] / vgr1mag];
+
+                            // Head pose to reference point horizontal
+                            // Vector glasses to head pose proj
+                            vgh1 = [headprojx - g1mc_x, headprojy - g1mc_y, headprojz - g1mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgh1mag = Math.sqrt((vgh1[0] * vgh1[0]) + (vgh1[1] * vgh1[1]) + (vgh1[2] * vgh1[2]));
+                            vgh1norm = [vgh1[0] / vgh1mag, vgh1[1] / vgh1mag, vgh1[2] / vgh1mag];
+                            // Then calculate the dot product
+                            resh1 = (vgr1norm[0] * vgh1norm[0]) + (vgr1norm[1] * vgh1norm[1]) + (vgr1norm[2] * vgh1norm[2]);
+                            // Recover the angle
+                            anglehh1 = Math.acos(resh1);
+                            // Angle in degrees
+                            anglehh1deg = anglehh1 * (180 / Math.PI);
+
+                            // Gaze to reference point
+                            // Vector glasses to gazeproj
+                            vgg1 = [gazeprojx - g1mc_x, gazeprojx - g1mc_y, gazeprojx - g1mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgg1mag = Math.sqrt((vgg1[0] * vgg1[0]) + (vgg1[1] * vgg1[1]) + (vgg1[2] * vgg1[2]));
+                            vgg1norm = [vgg1[0] / vgg1mag, vgg1[1] / vgg1mag, vgg1[2] / vgg1mag];
+                            // Then calculate the dot product
+                            resg1 = (vgr1norm[0] * vgg1norm[0]) + (vgr1norm[1] * vgg1norm[1]) + (vgr1norm[2] * vgg1norm[2]);
+                            // Recover the angle
+                            anglegh1 = Math.acos(resg1);
+                            // Angle in degrees
+                            anglegh1deg = anglegh1 * (180 / Math.PI);
+
+                            // Vector glasses to headrefpoint
+                            vgr1v = [headprojx - g1mc_x, headprojy - g1mc_y, headprojz - g1mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgr1vmag = Math.sqrt((vgr1v[0] * vgr1v[0]) + (vgr1v[1] * vgr1v[1]) + (vgr1v[2] * vgr1v[2]));
+                            vgr1vnorm = [vgr1v[0] / vgr1vmag, vgr1v[1] / vgr1vmag, vgr1v[2] / vgr1vmag];
+
+                            // Head pose to reference point vertical
+                            // Vector glasses to head pose intersected
+                            vgh1v = [intersectedhead[0] - g1mc_x, intersectedhead[1] - g1mc_y, intersectedhead[2] - g1mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgh1vmag = Math.sqrt((vgh1v[0] * vgh1v[0]) + (vgh1v[1] * vgh1v[1]) + (vgh1v[2] * vgh1v[2]));
+                            vgh1vnorm = [vgh1v[0] / vgh1vmag, vgh1v[1] / vgh1vmag, vgh1v[2] / vgh1vmag];
+                            // Then calculate the dot product
+                            resh1v = (vgr1vnorm[0] * vgh1vnorm[0]) + (vgr1vnorm[1] * vgh1vnorm[1]) + (vgr1vnorm[2] * vgh1vnorm[2]);
+                            // Recover the angle
+                            anglehv1 = Math.acos(resh1v);
+                            // Angle in degrees
+                            anglehv1deg = anglehv1 * (180 / Math.PI);
+
+                            // Vector glasses to gazerefpoint
+                            vgr1gv = [gazeprojx - g1mc_x, gazeprojy - g1mc_y, gazeprojz - g1mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgr1gvmag = Math.sqrt((vgr1gv[0] * vgr1gv[0]) + (vgr1gv[1] * vgr1gv[1]) + (vgr1gv[2] * vgr1gv[2]));
+                            vgr1gvnorm = [vgr1gv[0] / vgr1gvmag, vgr1gv[1] / vgr1gvmag, vgr1gv[2] / vgr1gvmag];
+
+                            // Gaze to reference point vertical
+                            // Vector glasses to gaze intersected
+                            vgg1v = [intersectedgaze[0] - g1mc_x, intersectedgaze[1] - g1mc_y, intersectedgaze[2] - g1mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgg1vmag = Math.sqrt((vgg1v[0] * vgg1v[0]) + (vgg1v[1] * vgg1v[1]) + (vgg1v[2] * vgg1v[2]));
+                            vgg1vnorm = [vgg1v[0] / vgg1vmag, vgg1v[1] / vgg1vmag, vgg1v[2] / vgg1vmag];
+                            // Then calculate the dot product
+                            resg1v = (vgr1gvnorm[0] * vgg1vnorm[0]) + (vgr1gvnorm[1] * vgg1vnorm[1]) + (vgr1gvnorm[2] * vgg1vnorm[2]);
+                            // Recover the angle
+                            anglegv1 = Math.acos(resg1v);
+                            // Angle in degrees
+                            anglegv1deg = anglegv1 * (180 / Math.PI);
+
+                            console.log("Head pose 1 horizontal angle: ", anglehh1deg);
+                            console.log("Gaze 1 horizontal angle: ", anglegh1deg);
+                            console.log("--------------------------------------------");
+                            console.log("Head pose 1 vertical angle: ", anglehv1deg);
+                            console.log("Gaze 1 vertical angle: ", anglegv1deg);
+                            console.log("++++++++++++++++++++++++++++++++++++++++++++");
                         }
                     }
                     // Incrementing to next frame (skipping one)

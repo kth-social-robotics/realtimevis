@@ -154,6 +154,8 @@ if (refvis == '1'){
 
     var headrefmarker = null;
     var gazerefmarker = null;
+    var headprojrefmarker = null;
+    var gazeprojrefmarker = null;
 }
 
 // Floor
@@ -265,6 +267,8 @@ if (refvis == '1'){
 
     var headref_pos;
     var gazeref_pos;
+    var headprojref_pos;
+    var gazeprojref_pos;
 }
 
 // Light settings
