@@ -151,6 +151,8 @@ if (refvis == '1'){
     var refmarker3 = null;
     var refmarker4 = null;
     var refmarkerc = null;
+
+    var headrefmarker = null;
 }
 
 // Floor
@@ -259,6 +261,8 @@ if (refvis == '1'){
     var refclinegeo;
     var refline;
     var refcline;
+
+    var headref_pos;
 }
 
 // Light settings
