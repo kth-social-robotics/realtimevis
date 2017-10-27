@@ -507,6 +507,8 @@ initScene = function() {
 
         headrefmarker = new THREE.Points(dotGeometry, dotMaterial);
         scene.add(headrefmarker);
+        gazerefmarker = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(gazerefmarker);
 
         // Ref screen point line
         var refclinematerial = new THREE.LineBasicMaterial({

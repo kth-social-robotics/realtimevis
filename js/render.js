@@ -797,17 +797,29 @@ render = function(results) {
                         if (refvis == '1'){
                             // Glasses 1
                             // Refpoint x, y, z is point_proj
+                            // Plane coefficients are: -0.70463175x + 0y + 0.00159225z = 0.15023723114438
+                            // http://keisan.casio.com/exec/system/1223596129
+                            // http://mathjs.org/docs/reference/functions/intersect.html
 
-                            // Define ref plane
-                            var refPlane = new THREE.Plane();
-                            refPlane.setFromCoplanarPoints(plane1v, plane2v, plane3v);
-
-                            // Define headpose line
-                            var headline = new THREE.Line3(new THREE.Vector3(g1mc_x, g1mc_y, g1mc_z), new THREE.Vector3(csvData[index_frame][g1hpx], csvData[index_frame][g1hpx+1], csvData[index_frame][g1hpx+2]));
+                            // Find intersection point for headpose
+                            intersectedhead = math.intersect([g1mc_x, g1mc_y, g1mc_z], [csvData[index_frame][g1hpx], csvData[index_frame][g1hpx+1], csvData[index_frame][g1hpx+2]], [-0.70463175, 0, 0.00159225, 0.15023723114438]);
 
                             // Reference Screen head interesection marker
-                            headref_pos = new THREE.Vector3(refPlane.intersectLine(headline).x, refPlane.intersectLine(headline).y, refPlane.intersectLine(headline).z);
+                            headref_pos = new THREE.Vector3(intersectedhead[0], intersectedhead[1], intersectedhead[2]);
                             headrefmarker.position.copy(headref_pos);
+
+                            // Find intersection point for gaze
+                            gix = csvData[index_frame][g1gp3x];
+                            if (!gix) {gix = 0;}
+                            giy = csvData[index_frame][g1gp3x+1];
+                            if (!giy) {giy = 0;}
+                            giz = csvData[index_frame][g1gp3x+2];
+                            if (!giz) {giz = 0;}
+                            intersectedgaze = math.intersect([g1mc_x, g1mc_y, g1mc_z], [gix, giy, giz], [-0.70463175, 0, 0.00159225, 0.15023723114438]);
+
+                            // Reference Screen gaze interesection marker
+                            gazeref_pos = new THREE.Vector3(intersectedgaze[0], intersectedgaze[1], intersectedgaze[2]);
+                            gazerefmarker.position.copy(gazeref_pos);
 
                             // // Vector glasses to refpoint
                             // vgr1 = [refx - g1mc_x, refy - g1mc_y, refz - g1mc_z];
