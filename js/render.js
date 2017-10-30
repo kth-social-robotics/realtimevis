@@ -861,7 +861,7 @@ render = function(results) {
 
                             // Gaze to reference point
                             // Vector glasses to gazeproj
-                            vgg1 = [gazeprojx - g1mc_x, gazeprojx - g1mc_y, gazeprojx - g1mc_z];
+                            vgg1 = [gazeprojx - g1mc_x, gazeprojy - g1mc_y, gazeprojz - g1mc_z];
                             // The dot product of vgr and vgh is a function of the cosine of the angle between them
                             // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
                             vgg1mag = Math.sqrt((vgg1[0] * vgg1[0]) + (vgg1[1] * vgg1[1]) + (vgg1[2] * vgg1[2]));
@@ -917,10 +917,10 @@ render = function(results) {
 
                             console.log("Head pose 1 horizontal angle: ", anglehh1deg);
                             console.log("Gaze 1 horizontal angle: ", anglegh1deg);
-                            console.log("--------------------------------------------");
+                            console.log("----------------------------------------------------");
                             console.log("Head pose 1 vertical angle: ", anglehv1deg);
                             console.log("Gaze 1 vertical angle: ", anglegv1deg);
-                            console.log("++++++++++++++++++++++++++++++++++++++++++++");
+                            console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++");
                         }
                     }
                     // Incrementing to next frame (skipping one)
