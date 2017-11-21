@@ -26,11 +26,17 @@ render = function(results) {
         // Get message from web socket
         ws.onmessage = function(event) {
             csvStream = event.data;
+
+            // Check that MATLAB has started
+            if (csvStream == 'MATLAB'){
+                console.log("MATLAB has started");
+            }
             csvStream = csvStream.replace(/'/g, '"');
         };
 
         //csvData = data3d;
-        if(csvStream != "{}"){
+        if(csvStream != "{}" && csvStream != 'MATLAB'){
+            //console.log(csvStream);
             csvData = JSON.parse(csvStream);
         }
 
@@ -68,32 +74,29 @@ render = function(results) {
                 glinegeo1.vertices[4].set(csvData['mocap_glasses1']['marker1']['x'], csvData['mocap_glasses1']['marker1']['y'], csvData['mocap_glasses1']['marker1']['z']);
                 glinegeo1.verticesNeedUpdate = true;
 
-                // // Gaze GP3 Glasses 1
-                // var g1gp3x = 131;
-                // // Check if the Gaze GP3 first row has values or not
-                // if (!csvData[index_frame][g1gp3x]) { // x from object position
-                //     // Set the object's markers
-                //     gp3_pos1 = new THREE.Vector3(0, 0, 0);
-                //     gp3marker1.position.copy(gp3_pos1);
-                //
-                //     // Console log position and rotation
-                //     //console.log("No gp3 for glasses 1 found");
-                // }
-                // // Check if the Gaze GP3 row has values or not
-                // else if (csvData[index_frame][g1gp3x]) { // x from marker position
-                //     // Set the object's markers
-                //     gp3_pos1 = new THREE.Vector3(csvData[index_frame][g1gp3x], csvData[index_frame][g1gp3x+1], csvData[index_frame][g1gp3x+2]);
-                //     gp3marker1.position.copy(gp3_pos1);
-                //
-                //     // Connect markers with a line
-                //     gp3linegeo1.vertices[0].set(csvData[index_frame][g1gp3x], csvData[index_frame][g1gp3x+1], csvData[index_frame][g1gp3x+2]);
-                //     gp3linegeo1.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
-                //     gp3linegeo1.verticesNeedUpdate = true;
-                // }
-                // else {
-                //     // Console log position and rotation (unknown)
-                //     //console.log("GP3 Glasses 1 Position: Unknown");
-                // }
+                // Check that the glasses are on
+                if(csvData['tobii_glasses1'] && csvData['tobii_glasses1']['gp3_3d']['x'] != 0){
+
+                    // Gaze GP3 Glasses 1
+                    // Set the object's markers
+                    gp3_pos1 = new THREE.Vector3(csvData['tobii_glasses1']['gp3_3d']['x'], csvData['tobii_glasses1']['gp3_3d']['y'], csvData['tobii_glasses1']['gp3_3d']['z']);
+                    gp3marker1.position.copy(gp3_pos1);
+
+                    // Connect markers with a line
+                    gp3linegeo1.vertices[0].set(csvData['tobii_glasses1']['gp3_3d']['x'], csvData['tobii_glasses1']['gp3_3d']['y'], csvData['tobii_glasses1']['gp3_3d']['z']);
+                    gp3linegeo1.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
+                    gp3linegeo1.verticesNeedUpdate = true;
+
+                    // Gaze Head pose Glasses 1
+                    // Set the object's markers
+                    hp_pos1 = new THREE.Vector3(csvData['tobii_glasses1']['headpose']['x'], csvData['tobii_glasses1']['headpose']['y'], csvData['tobii_glasses1']['headpose']['z']);
+                    hpmarker1.position.copy(hp_pos1);
+
+                    // Connect markers with a line
+                    hplinegeo1.vertices[0].set(csvData['tobii_glasses1']['headpose']['x'], csvData['tobii_glasses1']['headpose']['y'], csvData['tobii_glasses1']['headpose']['z']);
+                    hplinegeo1.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
+                    hplinegeo1.verticesNeedUpdate = true;
+                }
 
                 // Target 1
                 // Set the object's markers
@@ -142,8 +145,8 @@ render = function(results) {
                 // Connect markers with a line
                 tlinegeo2.vertices[0].set(csvData['mocap_target2']['marker1']['x'], csvData['mocap_target2']['marker1']['y'], csvData['mocap_target2']['marker1']['z']);
                 tlinegeo2.vertices[1].set(csvData['mocap_target2']['marker2']['x'], csvData['mocap_target2']['marker2']['y'], csvData['mocap_target2']['marker2']['z']);
-                tlinegeo2.vertices[2].set(csvData['mocap_target2']['marker4']['x'], csvData['mocap_target2']['marker4']['y'], csvData['mocap_target2']['marker4']['z']);
-                tlinegeo2.vertices[3].set(csvData['mocap_target2']['marker3']['x'], csvData['mocap_target2']['marker3']['y'], csvData['mocap_target2']['marker3']['z']);
+                tlinegeo2.vertices[2].set(csvData['mocap_target2']['marker3']['x'], csvData['mocap_target2']['marker3']['y'], csvData['mocap_target2']['marker3']['z']);
+                tlinegeo2.vertices[3].set(csvData['mocap_target2']['marker4']['x'], csvData['mocap_target2']['marker4']['y'], csvData['mocap_target2']['marker4']['z']);
                 tlinegeo2.vertices[4].set(csvData['mocap_target2']['marker1']['x'], csvData['mocap_target2']['marker1']['y'], csvData['mocap_target2']['marker1']['z']);
                 tlinegeo2.verticesNeedUpdate = true;
             }

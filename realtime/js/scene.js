@@ -132,6 +132,24 @@ initScene = function() {
     gp3line1 = new THREE.Line(gp3linegeo1, gp3linematerial);
     scene.add(gp3line1);
 
+    // Head pose markers
+    var dotGeometry = new THREE.Geometry();
+    dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
+    var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
+    hpmarker1 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(hpmarker1);
+
+    // Head pose marker line
+    var hplinematerial1 = new THREE.LineBasicMaterial({
+        color: 0xFFFFFF,
+        linewidth: 3
+    });
+    hplinegeo1 = new THREE.Geometry();
+    hplinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+    hplinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+    hpline1 = new THREE.Line(hplinegeo1, hplinematerial1);
+    scene.add(hpline1);
+
     // Target 1 markers
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));

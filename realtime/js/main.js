@@ -25,6 +25,9 @@ var g1markerc = null;
 // Gp3
 var gp3marker1 = null;
 
+// Headpose
+var hpmarker1 = null;
+
 // Targets
 var t1marker1 = null;
 var t1marker2 = null;
@@ -62,6 +65,13 @@ var gp3_pos1;
 // GP3 Marker Lines
 var gp3linegeo1;
 var gp3line1;
+
+// Head pose
+var hp_pos1;
+
+// Head pose Marker Lines
+var hplinegeo1;
+var hpline1;
 
 // Target 1 helper
 var t1m1_pos, t1m2_pos, t1m3_pos, t1m4_pos;
