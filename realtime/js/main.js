@@ -28,6 +28,13 @@ var gp3marker1 = null;
 // Headpose
 var hpmarker1 = null;
 
+// Hands
+var h1rmarker1 = null;
+var h1rmarker2 = null;
+var h1rmarker3 = null;
+var h1rmarker4 = null;
+var h1rmarkerc = null;
+
 // Targets
 var t1marker1 = null;
 var t1marker2 = null;
@@ -72,6 +79,19 @@ var hp_pos1;
 // Head pose Marker Lines
 var hplinegeo1;
 var hpline1;
+
+// Hand 1R helper
+var h1rm1_pos, h1rm2_pos, h1rm3_pos, h1rm4_pos;
+var h1rmc_pos;
+var h1rmc_x, h1rmc_y, h1rmc_z;
+
+// Hand 1R Marker Lines
+var hlinegeo1r;
+var h1rline;
+
+// GlassesHand 1R Marker Lines
+var ghlinegeo1r;
+var ghline1r;
 
 // Target 1 helper
 var t1m1_pos, t1m2_pos, t1m3_pos, t1m4_pos;

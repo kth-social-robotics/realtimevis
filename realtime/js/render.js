@@ -98,6 +98,37 @@ render = function(results) {
                     hplinegeo1.verticesNeedUpdate = true;
                 }
 
+                // Hand 1R
+                // Set the object's markers
+                h1rm1_pos = new THREE.Vector3(csvData['mocap_hand1right']['marker1']['x'], csvData['mocap_hand1right']['marker1']['y'], csvData['mocap_hand1right']['marker1']['z']);
+                h1rmarker1.position.copy(h1rm1_pos);
+                h1rm2_pos = new THREE.Vector3(csvData['mocap_hand1right']['marker2']['x'], csvData['mocap_hand1right']['marker2']['y'], csvData['mocap_hand1right']['marker2']['z']);
+                h1rmarker2.position.copy(h1rm2_pos);
+                h1rm3_pos = new THREE.Vector3(csvData['mocap_hand1right']['marker3']['x'], csvData['mocap_hand1right']['marker3']['y'], csvData['mocap_hand1right']['marker3']['z']);
+                h1rmarker3.position.copy(h1rm3_pos);
+                h1rm4_pos = new THREE.Vector3(csvData['mocap_hand1right']['marker4']['x'], csvData['mocap_hand1right']['marker4']['y'], csvData['mocap_hand1right']['marker4']['z']);
+                h1rmarker4.position.copy(h1rm4_pos);
+
+                // Get mid point
+                h1rmc_x = csvData['mocap_hand1right']['position']['x'];
+                h1rmc_y = csvData['mocap_hand1right']['position']['y'];
+                h1rmc_z = csvData['mocap_hand1right']['position']['z'];
+                h1rmc_pos = new THREE.Vector3(h1rmc_x, h1rmc_y, h1rmc_z);
+                h1rmarkerc.position.copy(h1rmc_pos);
+
+                // Connect markers with a line
+                hlinegeo1r.vertices[0].set(csvData['mocap_hand1right']['marker1']['x'], csvData['mocap_hand1right']['marker1']['y'], csvData['mocap_hand1right']['marker1']['z']);
+                hlinegeo1r.vertices[1].set(csvData['mocap_hand1right']['marker3']['x'], csvData['mocap_hand1right']['marker3']['y'], csvData['mocap_hand1right']['marker3']['z']);
+                hlinegeo1r.vertices[2].set(csvData['mocap_hand1right']['marker4']['x'], csvData['mocap_hand1right']['marker4']['y'], csvData['mocap_hand1right']['marker4']['z']);
+                hlinegeo1r.vertices[3].set(csvData['mocap_hand1right']['marker2']['x'], csvData['mocap_hand1right']['marker2']['y'], csvData['mocap_hand1right']['marker2']['z']);
+                hlinegeo1r.vertices[4].set(csvData['mocap_hand1right']['marker1']['x'], csvData['mocap_hand1right']['marker1']['y'], csvData['mocap_hand1right']['marker1']['z']);
+                hlinegeo1r.verticesNeedUpdate = true;
+
+                // Connect glasses and hand with a line
+                ghlinegeo1r.vertices[0].set(h1rmc_x, h1rmc_y, h1rmc_z);
+                ghlinegeo1r.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
+                ghlinegeo1r.verticesNeedUpdate = true;
+
                 // Target 1
                 // Set the object's markers
                 t1m1_pos = new THREE.Vector3(csvData['mocap_target1']['marker1']['x'], csvData['mocap_target1']['marker1']['y'], csvData['mocap_target1']['marker1']['z']);
