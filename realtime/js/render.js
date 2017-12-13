@@ -60,16 +60,16 @@ render = function(results) {
                 g1marker4.position.copy(g1m4_pos);
 
                 // Calculate midpoint of two front markers
-                g1mc_x = (csvData['mocap_glasses1']['marker3']['x'] + csvData['mocap_glasses1']['marker4']['x']) / 2;
-                g1mc_y = (csvData['mocap_glasses1']['marker3']['y'] + csvData['mocap_glasses1']['marker4']['y']) / 2;
-                g1mc_z = (csvData['mocap_glasses1']['marker3']['z'] + csvData['mocap_glasses1']['marker4']['z']) / 2;
+                g1mc_x = (csvData['mocap_glasses1']['marker1']['x'] + csvData['mocap_glasses1']['marker3']['x']) / 2;
+                g1mc_y = (csvData['mocap_glasses1']['marker1']['y'] + csvData['mocap_glasses1']['marker3']['y']) / 2;
+                g1mc_z = (csvData['mocap_glasses1']['marker1']['z'] + csvData['mocap_glasses1']['marker3']['z']) / 2;
                 g1mc_pos = new THREE.Vector3(g1mc_x, g1mc_y, g1mc_z);
                 g1markerc.position.copy(g1mc_pos);
 
                 // Connect markers with a line
                 glinegeo1.vertices[0].set(csvData['mocap_glasses1']['marker1']['x'], csvData['mocap_glasses1']['marker1']['y'], csvData['mocap_glasses1']['marker1']['z']);
-                glinegeo1.vertices[1].set(csvData['mocap_glasses1']['marker2']['x'], csvData['mocap_glasses1']['marker2']['y'], csvData['mocap_glasses1']['marker2']['z']);
-                glinegeo1.vertices[2].set(csvData['mocap_glasses1']['marker3']['x'], csvData['mocap_glasses1']['marker3']['y'], csvData['mocap_glasses1']['marker3']['z']);
+                glinegeo1.vertices[1].set(csvData['mocap_glasses1']['marker3']['x'], csvData['mocap_glasses1']['marker3']['y'], csvData['mocap_glasses1']['marker3']['z']);
+                glinegeo1.vertices[2].set(csvData['mocap_glasses1']['marker2']['x'], csvData['mocap_glasses1']['marker2']['y'], csvData['mocap_glasses1']['marker2']['z']);
                 glinegeo1.vertices[3].set(csvData['mocap_glasses1']['marker4']['x'], csvData['mocap_glasses1']['marker4']['y'], csvData['mocap_glasses1']['marker4']['z']);
                 glinegeo1.vertices[4].set(csvData['mocap_glasses1']['marker1']['x'], csvData['mocap_glasses1']['marker1']['y'], csvData['mocap_glasses1']['marker1']['z']);
                 glinegeo1.verticesNeedUpdate = true;
@@ -98,33 +98,64 @@ render = function(results) {
                     hplinegeo1.verticesNeedUpdate = true;
                 }
 
+                // Hand 1L
+                // Set the object's markers
+                h1lm1_pos = new THREE.Vector3(csvData['mocap_hand1l']['marker1']['x'], csvData['mocap_hand1l']['marker1']['y'], csvData['mocap_hand1l']['marker1']['z']);
+                h1lmarker1.position.copy(h1lm1_pos);
+                h1lm2_pos = new THREE.Vector3(csvData['mocap_hand1l']['marker2']['x'], csvData['mocap_hand1l']['marker2']['y'], csvData['mocap_hand1l']['marker2']['z']);
+                h1lmarker2.position.copy(h1lm2_pos);
+                h1lm3_pos = new THREE.Vector3(csvData['mocap_hand1l']['marker3']['x'], csvData['mocap_hand1l']['marker3']['y'], csvData['mocap_hand1l']['marker3']['z']);
+                h1lmarker3.position.copy(h1lm3_pos);
+                h1lm4_pos = new THREE.Vector3(csvData['mocap_hand1l']['marker4']['x'], csvData['mocap_hand1l']['marker4']['y'], csvData['mocap_hand1l']['marker4']['z']);
+                h1lmarker4.position.copy(h1lm4_pos);
+
+                // Get mid point
+                h1lmc_x = csvData['mocap_hand1l']['position']['x'];
+                h1lmc_y = csvData['mocap_hand1l']['position']['y'];
+                h1lmc_z = csvData['mocap_hand1l']['position']['z'];
+                h1lmc_pos = new THREE.Vector3(h1lmc_x, h1lmc_y, h1lmc_z);
+                h1lmarkerc.position.copy(h1lmc_pos);
+
+                // Connect markers with a line
+                hlinegeo1l.vertices[0].set(csvData['mocap_hand1l']['marker1']['x'], csvData['mocap_hand1l']['marker1']['y'], csvData['mocap_hand1l']['marker1']['z']);
+                hlinegeo1l.vertices[1].set(csvData['mocap_hand1l']['marker4']['x'], csvData['mocap_hand1l']['marker4']['y'], csvData['mocap_hand1l']['marker4']['z']);
+                hlinegeo1l.vertices[2].set(csvData['mocap_hand1l']['marker3']['x'], csvData['mocap_hand1l']['marker3']['y'], csvData['mocap_hand1l']['marker3']['z']);
+                hlinegeo1l.vertices[3].set(csvData['mocap_hand1l']['marker2']['x'], csvData['mocap_hand1l']['marker2']['y'], csvData['mocap_hand1l']['marker2']['z']);
+                hlinegeo1l.vertices[4].set(csvData['mocap_hand1l']['marker1']['x'], csvData['mocap_hand1l']['marker1']['y'], csvData['mocap_hand1l']['marker1']['z']);
+                hlinegeo1l.verticesNeedUpdate = true;
+
+                // Connect glasses and hand1l with a line
+                ghlinegeo1l.vertices[0].set(h1lmc_x, h1lmc_y, h1lmc_z);
+                ghlinegeo1l.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
+                ghlinegeo1l.verticesNeedUpdate = true;
+
                 // Hand 1R
                 // Set the object's markers
-                h1rm1_pos = new THREE.Vector3(csvData['mocap_hand1right']['marker1']['x'], csvData['mocap_hand1right']['marker1']['y'], csvData['mocap_hand1right']['marker1']['z']);
+                h1rm1_pos = new THREE.Vector3(csvData['mocap_hand1r']['marker1']['x'], csvData['mocap_hand1r']['marker1']['y'], csvData['mocap_hand1r']['marker1']['z']);
                 h1rmarker1.position.copy(h1rm1_pos);
-                h1rm2_pos = new THREE.Vector3(csvData['mocap_hand1right']['marker2']['x'], csvData['mocap_hand1right']['marker2']['y'], csvData['mocap_hand1right']['marker2']['z']);
+                h1rm2_pos = new THREE.Vector3(csvData['mocap_hand1r']['marker2']['x'], csvData['mocap_hand1r']['marker2']['y'], csvData['mocap_hand1r']['marker2']['z']);
                 h1rmarker2.position.copy(h1rm2_pos);
-                h1rm3_pos = new THREE.Vector3(csvData['mocap_hand1right']['marker3']['x'], csvData['mocap_hand1right']['marker3']['y'], csvData['mocap_hand1right']['marker3']['z']);
+                h1rm3_pos = new THREE.Vector3(csvData['mocap_hand1r']['marker3']['x'], csvData['mocap_hand1r']['marker3']['y'], csvData['mocap_hand1r']['marker3']['z']);
                 h1rmarker3.position.copy(h1rm3_pos);
-                h1rm4_pos = new THREE.Vector3(csvData['mocap_hand1right']['marker4']['x'], csvData['mocap_hand1right']['marker4']['y'], csvData['mocap_hand1right']['marker4']['z']);
+                h1rm4_pos = new THREE.Vector3(csvData['mocap_hand1r']['marker4']['x'], csvData['mocap_hand1r']['marker4']['y'], csvData['mocap_hand1r']['marker4']['z']);
                 h1rmarker4.position.copy(h1rm4_pos);
 
                 // Get mid point
-                h1rmc_x = csvData['mocap_hand1right']['position']['x'];
-                h1rmc_y = csvData['mocap_hand1right']['position']['y'];
-                h1rmc_z = csvData['mocap_hand1right']['position']['z'];
+                h1rmc_x = csvData['mocap_hand1r']['position']['x'];
+                h1rmc_y = csvData['mocap_hand1r']['position']['y'];
+                h1rmc_z = csvData['mocap_hand1r']['position']['z'];
                 h1rmc_pos = new THREE.Vector3(h1rmc_x, h1rmc_y, h1rmc_z);
                 h1rmarkerc.position.copy(h1rmc_pos);
 
                 // Connect markers with a line
-                hlinegeo1r.vertices[0].set(csvData['mocap_hand1right']['marker1']['x'], csvData['mocap_hand1right']['marker1']['y'], csvData['mocap_hand1right']['marker1']['z']);
-                hlinegeo1r.vertices[1].set(csvData['mocap_hand1right']['marker3']['x'], csvData['mocap_hand1right']['marker3']['y'], csvData['mocap_hand1right']['marker3']['z']);
-                hlinegeo1r.vertices[2].set(csvData['mocap_hand1right']['marker4']['x'], csvData['mocap_hand1right']['marker4']['y'], csvData['mocap_hand1right']['marker4']['z']);
-                hlinegeo1r.vertices[3].set(csvData['mocap_hand1right']['marker2']['x'], csvData['mocap_hand1right']['marker2']['y'], csvData['mocap_hand1right']['marker2']['z']);
-                hlinegeo1r.vertices[4].set(csvData['mocap_hand1right']['marker1']['x'], csvData['mocap_hand1right']['marker1']['y'], csvData['mocap_hand1right']['marker1']['z']);
+                hlinegeo1r.vertices[0].set(csvData['mocap_hand1r']['marker1']['x'], csvData['mocap_hand1r']['marker1']['y'], csvData['mocap_hand1r']['marker1']['z']);
+                hlinegeo1r.vertices[1].set(csvData['mocap_hand1r']['marker3']['x'], csvData['mocap_hand1r']['marker3']['y'], csvData['mocap_hand1r']['marker3']['z']);
+                hlinegeo1r.vertices[2].set(csvData['mocap_hand1r']['marker4']['x'], csvData['mocap_hand1r']['marker4']['y'], csvData['mocap_hand1r']['marker4']['z']);
+                hlinegeo1r.vertices[3].set(csvData['mocap_hand1r']['marker2']['x'], csvData['mocap_hand1r']['marker2']['y'], csvData['mocap_hand1r']['marker2']['z']);
+                hlinegeo1r.vertices[4].set(csvData['mocap_hand1r']['marker1']['x'], csvData['mocap_hand1r']['marker1']['y'], csvData['mocap_hand1r']['marker1']['z']);
                 hlinegeo1r.verticesNeedUpdate = true;
 
-                // Connect glasses and hand with a line
+                // Connect glasses and hand1r with a line
                 ghlinegeo1r.vertices[0].set(h1rmc_x, h1rmc_y, h1rmc_z);
                 ghlinegeo1r.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
                 ghlinegeo1r.verticesNeedUpdate = true;
@@ -176,10 +207,36 @@ render = function(results) {
                 // Connect markers with a line
                 tlinegeo2.vertices[0].set(csvData['mocap_target2']['marker1']['x'], csvData['mocap_target2']['marker1']['y'], csvData['mocap_target2']['marker1']['z']);
                 tlinegeo2.vertices[1].set(csvData['mocap_target2']['marker2']['x'], csvData['mocap_target2']['marker2']['y'], csvData['mocap_target2']['marker2']['z']);
-                tlinegeo2.vertices[2].set(csvData['mocap_target2']['marker3']['x'], csvData['mocap_target2']['marker3']['y'], csvData['mocap_target2']['marker3']['z']);
-                tlinegeo2.vertices[3].set(csvData['mocap_target2']['marker4']['x'], csvData['mocap_target2']['marker4']['y'], csvData['mocap_target2']['marker4']['z']);
+                tlinegeo2.vertices[2].set(csvData['mocap_target2']['marker4']['x'], csvData['mocap_target2']['marker4']['y'], csvData['mocap_target2']['marker4']['z']);
+                tlinegeo2.vertices[3].set(csvData['mocap_target2']['marker3']['x'], csvData['mocap_target2']['marker3']['y'], csvData['mocap_target2']['marker3']['z']);
                 tlinegeo2.vertices[4].set(csvData['mocap_target2']['marker1']['x'], csvData['mocap_target2']['marker1']['y'], csvData['mocap_target2']['marker1']['z']);
                 tlinegeo2.verticesNeedUpdate = true;
+
+                // Table
+                // Set the object's markers
+                tab1m1_pos = new THREE.Vector3(csvData['mocap_table1']['marker1']['x'], csvData['mocap_table1']['marker1']['y'], csvData['mocap_table1']['marker1']['z']);
+                tab1marker1.position.copy(tab1m1_pos);
+                tab1m2_pos = new THREE.Vector3(csvData['mocap_table1']['marker2']['x'], csvData['mocap_table1']['marker2']['y'], csvData['mocap_table1']['marker2']['z']);
+                tab1marker2.position.copy(tab1m2_pos);
+                tab1m3_pos = new THREE.Vector3(csvData['mocap_table1']['marker3']['x'], csvData['mocap_table1']['marker3']['y'], csvData['mocap_table1']['marker3']['z']);
+                tab1marker3.position.copy(tab1m3_pos);
+                tab1m4_pos = new THREE.Vector3(csvData['mocap_table1']['marker4']['x'], csvData['mocap_table1']['marker4']['y'], csvData['mocap_table1']['marker4']['z']);
+                tab1marker4.position.copy(tab1m4_pos);
+
+                // Get mid point
+                tab1mc_x = csvData['mocap_table1']['position']['x'];
+                tab1mc_y = csvData['mocap_table1']['position']['y'];
+                tab1mc_z = csvData['mocap_table1']['position']['z'];
+                tab1mc_pos = new THREE.Vector3(tab1mc_x, tab1mc_y, tab1mc_z);
+                tab1markerc.position.copy(tab1mc_pos);
+
+                // Connect markers with a line
+                tablinegeo1.vertices[0].set(csvData['mocap_table1']['marker1']['x'], csvData['mocap_table1']['marker1']['y'], csvData['mocap_table1']['marker1']['z']);
+                tablinegeo1.vertices[1].set(csvData['mocap_table1']['marker2']['x'], csvData['mocap_table1']['marker2']['y'], csvData['mocap_table1']['marker2']['z']);
+                tablinegeo1.vertices[2].set(csvData['mocap_table1']['marker4']['x'], csvData['mocap_table1']['marker4']['y'], csvData['mocap_table1']['marker4']['z']);
+                tablinegeo1.vertices[3].set(csvData['mocap_table1']['marker3']['x'], csvData['mocap_table1']['marker3']['y'], csvData['mocap_table1']['marker3']['z']);
+                tablinegeo1.vertices[4].set(csvData['mocap_table1']['marker1']['x'], csvData['mocap_table1']['marker1']['y'], csvData['mocap_table1']['marker1']['z']);
+                tablinegeo1.verticesNeedUpdate = true;
             }
 
             // Render the scene

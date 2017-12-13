@@ -29,6 +29,11 @@ var gp3marker1 = null;
 var hpmarker1 = null;
 
 // Hands
+var h1lmarker1 = null;
+var h1lmarker2 = null;
+var h1lmarker3 = null;
+var h1lmarker4 = null;
+var h1lmarkerc = null;
 var h1rmarker1 = null;
 var h1rmarker2 = null;
 var h1rmarker3 = null;
@@ -46,6 +51,13 @@ var t2marker2 = null;
 var t2marker3 = null;
 var t2marker4 = null;
 var t2markerc = null;
+
+// Table
+var tab1marker1 = null;
+var tab1marker2 = null;
+var tab1marker3 = null;
+var tab1marker4 = null;
+var tab1markerc = null;
 
 // Floor
 var floorMat;
@@ -80,6 +92,15 @@ var hp_pos1;
 var hplinegeo1;
 var hpline1;
 
+// Hand 1L helper
+var h1lm1_pos, h1lm2_pos, h1lm3_pos, h1lm4_pos;
+var h1lmc_pos;
+var h1lmc_x, h1lmc_y, h1lmc_z;
+
+// Hand 1L Marker Lines
+var hlinegeo1l;
+var h1lline;
+
 // Hand 1R helper
 var h1rm1_pos, h1rm2_pos, h1rm3_pos, h1rm4_pos;
 var h1rmc_pos;
@@ -88,6 +109,10 @@ var h1rmc_x, h1rmc_y, h1rmc_z;
 // Hand 1R Marker Lines
 var hlinegeo1r;
 var h1rline;
+
+// GlassesHand 1L Marker Lines
+var ghlinegeo1l;
+var ghline1l;
 
 // GlassesHand 1R Marker Lines
 var ghlinegeo1r;
@@ -110,6 +135,15 @@ var t2mc_x, t2mc_y, t2mc_z;
 // Target 2 Marker Lines
 var tlinegeo2;
 var t2line;
+
+// Table helper
+var tab1m1_pos, tab1m2_pos, tab1m3_pos, tab1m4_pos;
+var tab1mc_pos;
+var tab1mc_x, tab1mc_y, tab1mc_z;
+
+// Table Marker Lines
+var tablinegeo1;
+var tab1line;
 
 // Light settings
 var bulbLuminousPowers = {
@@ -154,7 +188,7 @@ function onWindowResize() {
 }
 
 // Connect to web socket
-var ws = new WebSocket('ws://130.237.67.187:8080/');
+var ws = new WebSocket('ws://130.237.67.209:8080/');
 ws.onopen = function() {
     console.log('CONNECT');
 };

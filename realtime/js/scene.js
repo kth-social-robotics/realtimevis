@@ -150,6 +150,35 @@ initScene = function() {
     hpline1 = new THREE.Line(hplinegeo1, hplinematerial1);
     scene.add(hpline1);
 
+    // Hand 1L markers
+    var dotGeometry = new THREE.Geometry();
+    dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
+    var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
+    h1lmarker1 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(h1lmarker1);
+    h1lmarker2 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(h1lmarker2);
+    h1lmarker3 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(h1lmarker3);
+    h1lmarker4 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(h1lmarker4);
+    h1lmarkerc = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(h1lmarkerc);
+
+    // Hand 1L marker line
+    var hlinematerial1l = new THREE.LineBasicMaterial({
+        color: 0xFFFFFF,
+        linewidth: 3
+    });
+    hlinegeo1l = new THREE.Geometry();
+    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
+    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
+    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
+    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
+    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
+    h1lline = new THREE.Line(hlinegeo1l, hlinematerial1l);
+    scene.add(h1lline);
+
     // Hand 1R markers
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
@@ -179,15 +208,26 @@ initScene = function() {
     h1rline = new THREE.Line(hlinegeo1r, hlinematerial1r);
     scene.add(h1rline);
 
+    // Glasses Hand 1L marker line
+    var ghlinematerial1l = new THREE.LineBasicMaterial({
+        color: 0xFFFFFF,
+        linewidth: 3
+    });
+    ghlinegeo1l = new THREE.Geometry();
+    ghlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
+    ghlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
+    ghline1l = new THREE.Line(ghlinegeo1l, ghlinematerial1l);
+    scene.add(ghline1l);
+
     // Glasses Hand 1R marker line
-    var ghlinematerial = new THREE.LineBasicMaterial({
+    var ghlinematerial1r = new THREE.LineBasicMaterial({
         color: 0xFFFFFF,
         linewidth: 3
     });
     ghlinegeo1r = new THREE.Geometry();
     ghlinegeo1r.vertices.push(new THREE.Vector3(0, 0, 0));
     ghlinegeo1r.vertices.push(new THREE.Vector3(0, 0, 0));
-    ghline1r = new THREE.Line(ghlinegeo1r, ghlinematerial);
+    ghline1r = new THREE.Line(ghlinegeo1r, ghlinematerial1r);
     scene.add(ghline1r);
 
     // Target 1 markers
@@ -247,6 +287,35 @@ initScene = function() {
     tlinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
     t2line = new THREE.Line(tlinegeo2, tlinematerial2);
     scene.add(t2line);
+
+    // Table markers
+    var dotGeometry = new THREE.Geometry();
+    dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
+    var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
+    tab1marker1 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(tab1marker1);
+    tab1marker2 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(tab1marker2);
+    tab1marker3 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(tab1marker3);
+    tab1marker4 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(tab1marker4);
+    tab1markerc = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(tab1markerc);
+
+    // Table marker line
+    var tablinematerial1 = new THREE.LineBasicMaterial({
+        color: 0x000000,
+        linewidth: 3
+    });
+    tablinegeo1 = new THREE.Geometry();
+    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+    tab1line = new THREE.Line(tablinegeo1, tablinematerial1);
+    scene.add(tab1line);
 
     // Camera movement
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
