@@ -42,7 +42,7 @@ render = function(results) {
 
         if (running) {
             // Start rendering after the first position values
-            if (csvData != null) {
+            if (csvData != null && csvData['mocap_glasses1'] && csvData['mocap_target1'] && csvData['mocap_target2'] && csvData['mocap_hand1l'] && csvData['mocap_hand1r']) {
                 // Text
                 // Display text for frames
                 text1.innerHTML = ("Frame: " + csvData['mocap_glasses1']['frame']);
