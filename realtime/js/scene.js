@@ -89,233 +89,294 @@ initScene = function() {
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    g1marker1 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(g1marker1);
-    g1marker2 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(g1marker2);
-    g1marker3 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(g1marker3);
-    g1marker4 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(g1marker4);
-    g1markerc = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(g1markerc);
+    for (var i = 1; i <= glasses_num; i++) {
+        gmarker1[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(gmarker1[i]);
+        gmarker2[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(gmarker2[i]);
+        gmarker3[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(gmarker3[i]);
+        gmarker4[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(gmarker4[i]);
+        gmarkerc[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(gmarkerc[i]);
+    }
 
     // Glasses marker line
-    var glinematerial1 = new THREE.LineBasicMaterial({
+    var glinematerial = new THREE.LineBasicMaterial({
         color: 0xFFFFFF,
         linewidth: 3
     });
-    glinegeo1 = new THREE.Geometry();
-    glinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    glinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    glinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    glinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    glinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    g1line = new THREE.Line(glinegeo1, glinematerial1);
-    scene.add(g1line);
+    for (var i = 1; i <= glasses_num; i++) {
+        glinegeo[i] = new THREE.Geometry();
+        glinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        glinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        glinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        glinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        glinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        gline[i] = new THREE.Line(glinegeo[i], glinematerial);
+        scene.add(gline[i]);
+    }
 
     // GP3 markers
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    gp3marker1 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(gp3marker1);
+    for (var i = 1; i <= glasses_num; i++) {
+        gp3marker[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(gp3marker[i]);
+    }
 
     // GP3 marker line
     var gp3linematerial = new THREE.LineBasicMaterial({
         color: 0xCC0000,
         linewidth: 3
     });
-    gp3linegeo1 = new THREE.Geometry();
-    gp3linegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    gp3linegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    gp3line1 = new THREE.Line(gp3linegeo1, gp3linematerial);
-    scene.add(gp3line1);
+    for (var i = 1; i <= glasses_num; i++) {
+        gp3linegeo[i] = new THREE.Geometry();
+        gp3linegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        gp3linegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        gp3line[i] = new THREE.Line(gp3linegeo[i], gp3linematerial);
+        scene.add(gp3line[i]);
+    }
 
     // Head pose markers
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    hpmarker1 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(hpmarker1);
+    for (var i = 1; i <= glasses_num; i++) {
+        hpmarker[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hpmarker[i]);
+    }
 
     // Head pose marker line
-    var hplinematerial1 = new THREE.LineBasicMaterial({
+    var hplinematerial = new THREE.LineBasicMaterial({
         color: 0xFFFFFF,
         linewidth: 3
     });
-    hplinegeo1 = new THREE.Geometry();
-    hplinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    hplinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    hpline1 = new THREE.Line(hplinegeo1, hplinematerial1);
-    scene.add(hpline1);
+    for (var i = 1; i <= glasses_num; i++) {
+        hplinegeo[i] = new THREE.Geometry();
+        hplinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hplinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hpline[i] = new THREE.Line(hplinegeo[i], hplinematerial);
+        scene.add(hpline[i]);
+    }
 
-    // Hand 1L markers
+    // Hand L markers
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    h1lmarker1 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1lmarker1);
-    h1lmarker2 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1lmarker2);
-    h1lmarker3 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1lmarker3);
-    h1lmarker4 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1lmarker4);
-    h1lmarkerc = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1lmarkerc);
+    for (var i = 1; i <= gloves_num; i++) {
+        hlmarker1[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hlmarker1[i]);
+        hlmarker2[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hlmarker2[i]);
+        hlmarker3[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hlmarker3[i]);
+        hlmarker4[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hlmarker4[i]);
+        hlmarkerc[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hlmarkerc[i]);
+    }
 
-    // Hand 1L marker line
-    var hlinematerial1l = new THREE.LineBasicMaterial({
+    // Hand L marker line
+    var hlinemateriall = new THREE.LineBasicMaterial({
         color: 0xFFFFFF,
         linewidth: 3
     });
-    hlinegeo1l = new THREE.Geometry();
-    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
-    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
-    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
-    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
-    hlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
-    h1lline = new THREE.Line(hlinegeo1l, hlinematerial1l);
-    scene.add(h1lline);
+    for (var i = 1; i <= gloves_num; i++) {
+        hlinegeol[i] = new THREE.Geometry();
+        hlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hlline[i] = new THREE.Line(hlinegeol[i], hlinemateriall);
+        scene.add(hlline[i]);
+    }
 
-    // Hand 1R markers
+    // Hand R markers
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    h1rmarker1 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1rmarker1);
-    h1rmarker2 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1rmarker2);
-    h1rmarker3 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1rmarker3);
-    h1rmarker4 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1rmarker4);
-    h1rmarkerc = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(h1rmarkerc);
+    for (var i = 1; i <= gloves_num; i++) {
+        hrmarker1[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hrmarker1[i]);
+        hrmarker2[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hrmarker2[i]);
+        hrmarker3[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hrmarker3[i]);
+        hrmarker4[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hrmarker4[i]);
+        hrmarkerc[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(hrmarkerc[i]);
+    }
 
-    // Hand 1R marker line
-    var hlinematerial1r = new THREE.LineBasicMaterial({
+    // Hand R marker line
+    var hlinematerialr = new THREE.LineBasicMaterial({
         color: 0xFFFFFF,
         linewidth: 3
     });
-    hlinegeo1r = new THREE.Geometry();
-    hlinegeo1r.vertices.push(new THREE.Vector3(0, 0, 0));
-    hlinegeo1r.vertices.push(new THREE.Vector3(0, 0, 0));
-    hlinegeo1r.vertices.push(new THREE.Vector3(0, 0, 0));
-    hlinegeo1r.vertices.push(new THREE.Vector3(0, 0, 0));
-    hlinegeo1r.vertices.push(new THREE.Vector3(0, 0, 0));
-    h1rline = new THREE.Line(hlinegeo1r, hlinematerial1r);
-    scene.add(h1rline);
+    for (var i = 1; i <= gloves_num; i++) {
+        hlinegeor[i] = new THREE.Geometry();
+        hlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        hrline[i] = new THREE.Line(hlinegeor[i], hlinematerialr);
+        scene.add(hrline[i]);
+    }
 
-    // Glasses Hand 1L marker line
-    var ghlinematerial1l = new THREE.LineBasicMaterial({
+    // Glasses Hand L marker line
+    var ghlinemateriall = new THREE.LineBasicMaterial({
         color: 0xFFFFFF,
         linewidth: 3
     });
-    ghlinegeo1l = new THREE.Geometry();
-    ghlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
-    ghlinegeo1l.vertices.push(new THREE.Vector3(0, 0, 0));
-    ghline1l = new THREE.Line(ghlinegeo1l, ghlinematerial1l);
-    scene.add(ghline1l);
+    for (var i = 1; i <= gloves_num; i++) {
+        ghlinegeol[i] = new THREE.Geometry();
+        ghlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        ghlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        ghlinel[i] = new THREE.Line(ghlinegeol[i], ghlinemateriall);
+        scene.add(ghlinel[i]);
+    }
 
-    // Glasses Hand 1R marker line
-    var ghlinematerial1r = new THREE.LineBasicMaterial({
+    // Glasses Hand R marker line
+    var ghlinematerialr = new THREE.LineBasicMaterial({
         color: 0xFFFFFF,
         linewidth: 3
     });
-    ghlinegeo1r = new THREE.Geometry();
-    ghlinegeo1r.vertices.push(new THREE.Vector3(0, 0, 0));
-    ghlinegeo1r.vertices.push(new THREE.Vector3(0, 0, 0));
-    ghline1r = new THREE.Line(ghlinegeo1r, ghlinematerial1r);
-    scene.add(ghline1r);
+    for (var i = 1; i <= gloves_num; i++) {
+        ghlinegeor[i] = new THREE.Geometry();
+        ghlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        ghlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        ghliner[i] = new THREE.Line(ghlinegeor[i], ghlinematerialr);
+        scene.add(ghliner[i]);
+    }
 
-    // Target 1 markers
+    // Target markers
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    t1marker1 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t1marker1);
-    t1marker2 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t1marker2);
-    t1marker3 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t1marker3);
-    t1marker4 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t1marker4);
-    t1markerc = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t1markerc);
+    for (var i = 1; i <= targets_num; i++) {
+        tmarker1[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tmarker1[i]);
+        tmarker2[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tmarker2[i]);
+        tmarker3[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tmarker3[i]);
+        tmarker4[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tmarker4[i]);
+        tmarkerc[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tmarkerc[i]);
+    }
 
-    // Target 1 marker line
-    var tlinematerial1 = new THREE.LineBasicMaterial({
+    // Target marker line
+    var tlinematerial = new THREE.LineBasicMaterial({
         color: 0x000000,
         linewidth: 3
     });
-    tlinegeo1 = new THREE.Geometry();
-    tlinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    tlinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    tlinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    tlinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    tlinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    t1line = new THREE.Line(tlinegeo1, tlinematerial1);
-    scene.add(t1line);
-
-    // Target 2 markers
-    var dotGeometry = new THREE.Geometry();
-    dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
-    var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    t2marker1 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t2marker1);
-    t2marker2 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t2marker2);
-    t2marker3 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t2marker3);
-    t2marker4 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t2marker4);
-    t2markerc = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(t2markerc);
-
-    // Target 2 marker line
-    var tlinematerial2 = new THREE.LineBasicMaterial({
-        color: 0x000000,
-        linewidth: 3
-    });
-    tlinegeo2 = new THREE.Geometry();
-    tlinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
-    tlinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
-    tlinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
-    tlinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
-    tlinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
-    t2line = new THREE.Line(tlinegeo2, tlinematerial2);
-    scene.add(t2line);
+    for (var i = 1; i <= targets_num; i++) {
+        tlinegeo[i] = new THREE.Geometry();
+        tlinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tlinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tlinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tlinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tlinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tline[i] = new THREE.Line(tlinegeo[i], tlinematerial);
+        scene.add(tline[i]);
+    }
 
     // Table markers
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    tab1marker1 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(tab1marker1);
-    tab1marker2 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(tab1marker2);
-    tab1marker3 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(tab1marker3);
-    tab1marker4 = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(tab1marker4);
-    tab1markerc = new THREE.Points(dotGeometry, dotMaterial);
-    scene.add(tab1markerc);
+    for (var i = 1; i <= tables_num; i++) {
+        tabmarker1[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tabmarker1[i]);
+        tabmarker2[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tabmarker2[i]);
+        tabmarker3[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tabmarker3[i]);
+        tabmarker4[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tabmarker4[i]);
+        tabmarkerc[i] = new THREE.Points(dotGeometry, dotMaterial);
+        scene.add(tabmarkerc[i]);
+    }
 
     // Table marker line
-    var tablinematerial1 = new THREE.LineBasicMaterial({
+    var tablinematerial = new THREE.LineBasicMaterial({
         color: 0x000000,
         linewidth: 3
     });
-    tablinegeo1 = new THREE.Geometry();
-    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    tablinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-    tab1line = new THREE.Line(tablinegeo1, tablinematerial1);
-    scene.add(tab1line);
+    for (var i = 1; i <= tables_num; i++) {
+        tablinegeo[i] = new THREE.Geometry();
+        tablinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tablinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tablinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tablinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tablinegeo[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        tabline[i] = new THREE.Line(tablinegeo[i], tablinematerial);
+        scene.add(tabline[i]);
+    }
+
+    // Furhat markers
+    var dotGeometry = new THREE.Geometry();
+    dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
+    var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
+    fmarker1 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(fmarker1);
+    fmarker2 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(fmarker2);
+    fmarker3 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(fmarker3);
+    fmarker4 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(fmarker4);
+    fmarkerc = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(fmarkerc);
+
+    // Furhat marker line
+    var flinematerial = new THREE.LineBasicMaterial({
+        color: 0x000000,
+        linewidth: 3
+    });
+    flinegeo = new THREE.Geometry();
+    flinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    flinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    flinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    flinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    flinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    fline = new THREE.Line(flinegeo, flinematerial);
+    scene.add(fline);
+
+    // calibration markers
+    var dotGeometry = new THREE.Geometry();
+    dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
+    var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
+    cmarker1 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(cmarker1);
+    cmarker2 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(cmarker2);
+    cmarker3 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(cmarker3);
+    cmarker4 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(cmarker4);
+    cmarkerc = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(cmarkerc);
+
+    // Calibration marker line
+    var clinematerial = new THREE.LineBasicMaterial({
+        color: 0x000000,
+        linewidth: 3
+    });
+    clinegeo = new THREE.Geometry();
+    clinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    clinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    clinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    clinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    clinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    cline = new THREE.Line(clinegeo, clinematerial);
+    scene.add(cline);
 
     // Camera movement
     var controls = new THREE.OrbitControls(camera, renderer.domElement);

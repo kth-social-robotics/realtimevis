@@ -35,13 +35,13 @@
 
     <script>
     url = window.location.href;
-    startfrom = 'start';
-    startfrom = startfrom.replace(/[\[\]]/g, "\\$&");
-    regex = new RegExp("[?&]" + startfrom + "(=([^&#]*)|&|#|$)");
+    webip = 'IP';
+    webip = webip.replace(/[\[\]]/g, "\\$&");
+    regex = new RegExp("[?&]" + webip + "(=([^&#]*)|&|#|$)");
     results = regex.exec(url);
-    var startvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
+    var ipvis =  decodeURIComponent(results[2].replace(/\+/g, " "));
 
-    console.log("Start: " + startvis);
+    console.log("Web Server IP: " + ipvis);
     </script>
 
     <script type="text/javascript" src="../../../libraries/threejs/build/three.min.js"></script>
@@ -55,7 +55,7 @@
 <body>
     <div id="container"></div>
     <div id="info">
-        Real Time Gaze Visualisation<br/>
+        Real Time Mocap-Gaze Visualisation<br/>
         Real world scale (PMI Lab): The lamp is 2 meters from the floor. The floor is 6x5 meters.</br>
     </div>
 
