@@ -82,7 +82,7 @@ render = function(results) {
 
                 // Check that the glasses are on
                 for (var i = 1; i <= glasses_num; i++) {
-                    if(csvData['tobii_glasses' + i]){
+                    if(csvData['tobii_glasses' + i] && csvData['tobii_glasses' + i]['gp3_3d']){
                         if(csvData['tobii_glasses' + i]['gp3_3d']['x'] != 0){
                             // Gaze GP3 Glasses 1
                             // Set the object's markers
@@ -230,8 +230,8 @@ render = function(results) {
                         // Connect markers with a line
                         tablinegeo[i].vertices[0].set(csvData['mocap_table' + i]['marker1']['x'], csvData['mocap_table' + i]['marker1']['y'], csvData['mocap_table' + i]['marker1']['z']);
                         tablinegeo[i].vertices[1].set(csvData['mocap_table' + i]['marker2']['x'], csvData['mocap_table' + i]['marker2']['y'], csvData['mocap_table' + i]['marker2']['z']);
-                        tablinegeo[i].vertices[2].set(csvData['mocap_table' + i]['marker4']['x'], csvData['mocap_table' + i]['marker4']['y'], csvData['mocap_table' + i]['marker4']['z']);
-                        tablinegeo[i].vertices[3].set(csvData['mocap_table' + i]['marker3']['x'], csvData['mocap_table' + i]['marker3']['y'], csvData['mocap_table' + i]['marker3']['z']);
+                        tablinegeo[i].vertices[2].set(csvData['mocap_table' + i]['marker3']['x'], csvData['mocap_table' + i]['marker3']['y'], csvData['mocap_table' + i]['marker3']['z']);
+                        tablinegeo[i].vertices[3].set(csvData['mocap_table' + i]['marker4']['x'], csvData['mocap_table' + i]['marker4']['y'], csvData['mocap_table' + i]['marker4']['z']);
                         tablinegeo[i].vertices[4].set(csvData['mocap_table' + i]['marker1']['x'], csvData['mocap_table' + i]['marker1']['y'], csvData['mocap_table' + i]['marker1']['z']);
                         tablinegeo[i].verticesNeedUpdate = true;
                     }
@@ -259,8 +259,8 @@ render = function(results) {
                     // Connect markers with a line
                     flinegeo.vertices[0].set(csvData['mocap_furhat']['marker1']['x'], csvData['mocap_furhat']['marker1']['y'], csvData['mocap_furhat']['marker1']['z']);
                     flinegeo.vertices[1].set(csvData['mocap_furhat']['marker2']['x'], csvData['mocap_furhat']['marker2']['y'], csvData['mocap_furhat']['marker2']['z']);
-                    flinegeo.vertices[2].set(csvData['mocap_furhat']['marker4']['x'], csvData['mocap_furhat']['marker4']['y'], csvData['mocap_furhat']['marker4']['z']);
-                    flinegeo.vertices[3].set(csvData['mocap_furhat']['marker3']['x'], csvData['mocap_furhat']['marker3']['y'], csvData['mocap_furhat']['marker3']['z']);
+                    flinegeo.vertices[2].set(csvData['mocap_furhat']['marker3']['x'], csvData['mocap_furhat']['marker3']['y'], csvData['mocap_furhat']['marker3']['z']);
+                    flinegeo.vertices[3].set(csvData['mocap_furhat']['marker4']['x'], csvData['mocap_furhat']['marker4']['y'], csvData['mocap_furhat']['marker4']['z']);
                     flinegeo.vertices[4].set(csvData['mocap_furhat']['marker1']['x'], csvData['mocap_furhat']['marker1']['y'], csvData['mocap_furhat']['marker1']['z']);
                     flinegeo.verticesNeedUpdate = true;
                 }
