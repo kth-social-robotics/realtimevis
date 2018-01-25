@@ -452,78 +452,26 @@ initScene = function() {
 
     // Ref point
     if (refvis == '1'){
-        // // Ref point line
-        // var reflinematerial = new THREE.LineBasicMaterial({
-        //     color: 0xFFCC00,
-        //     linewidth: 3
-        // });
-        // reflinegeo1 = new THREE.Geometry();
-        // reflinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-        // reflinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
-        // reflinegeo2 = new THREE.Geometry();
-        // reflinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
-        // reflinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
-        // reflinegeo3 = new THREE.Geometry();
-        // reflinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
-        // reflinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
-        // refline1 = new THREE.Line(reflinegeo1, reflinematerial);
-        // scene.add(refline1);
-        // refline2 = new THREE.Line(reflinegeo2, reflinematerial);
-        // scene.add(refline2);
-        // refline3 = new THREE.Line(reflinegeo3, reflinematerial);
-        // scene.add(refline3);
-
-        var dotGeometry = new THREE.Geometry();
-        dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
-        var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-        refmarker1 = new THREE.Points(dotGeometry, dotMaterial);
-        scene.add(refmarker1);
-        refmarker2 = new THREE.Points(dotGeometry, dotMaterial);
-        scene.add(refmarker2);
-        refmarker3 = new THREE.Points(dotGeometry, dotMaterial);
-        scene.add(refmarker3);
-        refmarker4 = new THREE.Points(dotGeometry, dotMaterial);
-        scene.add(refmarker4);
-
-        // Ref Screen marker line
+        // Ref point line
         var reflinematerial = new THREE.LineBasicMaterial({
             color: 0xFFCC00,
             linewidth: 3
         });
-        reflinegeo = new THREE.Geometry();
-        reflinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
-        reflinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
-        reflinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
-        reflinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
-        reflinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
-        refline = new THREE.Line(reflinegeo, reflinematerial);
-        scene.add(refline);
-
-        var dotGeometry = new THREE.Geometry();
-        dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
-        var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-        refmarkerc = new THREE.Points(dotGeometry, dotMaterial);
-        scene.add(refmarkerc);
-
-        headrefmarker = new THREE.Points(dotGeometry, dotMaterial);
-        scene.add(headrefmarker);
-        gazerefmarker = new THREE.Points(dotGeometry, dotMaterial);
-        scene.add(gazerefmarker);
-        headprojrefmarker = new THREE.Points(dotGeometry, dotMaterial);
-        scene.add(headprojrefmarker);
-        gazeprojrefmarker = new THREE.Points(dotGeometry, dotMaterial);
-        scene.add(gazeprojrefmarker);
-
-        // Ref screen point line
-        var refclinematerial = new THREE.LineBasicMaterial({
-            color: 0xFFCC00,
-            linewidth: 3
-        });
-        reflinegeoc = new THREE.Geometry();
-        reflinegeoc.vertices.push(new THREE.Vector3(0, 0, 0));
-        reflinegeoc.vertices.push(new THREE.Vector3(0, 0, 0));
-        reflinec = new THREE.Line(reflinegeoc, refclinematerial);
-        scene.add(reflinec);
+        reflinegeo1 = new THREE.Geometry();
+        reflinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo1.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo2 = new THREE.Geometry();
+        reflinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo2.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo3 = new THREE.Geometry();
+        reflinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
+        reflinegeo3.vertices.push(new THREE.Vector3(0, 0, 0));
+        refline1 = new THREE.Line(reflinegeo1, reflinematerial);
+        scene.add(refline1);
+        refline2 = new THREE.Line(reflinegeo2, reflinematerial);
+        scene.add(refline2);
+        refline3 = new THREE.Line(reflinegeo3, reflinematerial);
+        scene.add(refline3);
     }
 
     // Camera movement

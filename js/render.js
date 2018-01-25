@@ -613,10 +613,10 @@ render = function(results) {
                             gp3_pos2 = new THREE.Vector3(csvData[index_frame][g2gp3x], csvData[index_frame][g2gp3x+1], csvData[index_frame][g2gp3x+2]);
                             gp3marker2.position.copy(gp3_pos2);
 
-                            // // Connect markers with a line
-                            // gp3linegeo2.vertices[0].set(csvData[index_frame][g2gp3x], csvData[index_frame][g2gp3x+1], csvData[index_frame][g2gp3x+2]);
-                            // gp3linegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
-                            // gp3linegeo2.verticesNeedUpdate = true;
+                            // Connect markers with a line
+                            gp3linegeo2.vertices[0].set(csvData[index_frame][g2gp3x], csvData[index_frame][g2gp3x+1], csvData[index_frame][g2gp3x+2]);
+                            gp3linegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
+                            gp3linegeo2.verticesNeedUpdate = true;
                         }
                         else {
                             // Console log position and rotation (unknown)
@@ -640,10 +640,10 @@ render = function(results) {
                             gp3_pos3 = new THREE.Vector3(csvData[index_frame][g3gp3x], csvData[index_frame][g3gp3x+1], csvData[index_frame][g3gp3x+2]);
                             gp3marker3.position.copy(gp3_pos3);
 
-                            // // Connect markers with a line
-                            // gp3linegeo3.vertices[0].set(csvData[index_frame][g3gp3x], csvData[index_frame][g3gp3x+1], csvData[index_frame][g3gp3x+2]);
-                            // gp3linegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
-                            // gp3linegeo3.verticesNeedUpdate = true;
+                            // Connect markers with a line
+                            gp3linegeo3.vertices[0].set(csvData[index_frame][g3gp3x], csvData[index_frame][g3gp3x+1], csvData[index_frame][g3gp3x+2]);
+                            gp3linegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
+                            gp3linegeo3.verticesNeedUpdate = true;
                         }
                         else {
                             // Console log position and rotation (unknown)
@@ -686,10 +686,10 @@ render = function(results) {
                                 hp_pos2 = new THREE.Vector3(csvData[index_frame][g2hpx], csvData[index_frame][g2hpx+1], csvData[index_frame][g2hpx+2]);
                                 hpmarker2.position.copy(hp_pos2);
 
-                                // // Connect markers with a line
-                                // hplinegeo2.vertices[0].set(csvData[index_frame][g2hpx], csvData[index_frame][g2hpx+1], csvData[index_frame][g2hpx+2]);
-                                // hplinegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
-                                // hplinegeo2.verticesNeedUpdate = true;
+                                // Connect markers with a line
+                                hplinegeo2.vertices[0].set(csvData[index_frame][g2hpx], csvData[index_frame][g2hpx+1], csvData[index_frame][g2hpx+2]);
+                                hplinegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
+                                hplinegeo2.verticesNeedUpdate = true;
                             }
 
                             // Gaze Head pose Glasses 3
@@ -706,148 +706,56 @@ render = function(results) {
                                 hp_pos3 = new THREE.Vector3(csvData[index_frame][g3hpx], csvData[index_frame][g3hpx+1], csvData[index_frame][g3hpx+2]);
                                 hpmarker3.position.copy(hp_pos3);
 
-                                // // Connect markers with a line
-                                // hplinegeo3.vertices[0].set(csvData[index_frame][g3hpx], csvData[index_frame][g3hpx+1], csvData[index_frame][g3hpx+2]);
-                                // hplinegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
-                                // hplinegeo3.verticesNeedUpdate = true;
+                                // Connect markers with a line
+                                hplinegeo3.vertices[0].set(csvData[index_frame][g3hpx], csvData[index_frame][g3hpx+1], csvData[index_frame][g3hpx+2]);
+                                hplinegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
+                                hplinegeo3.verticesNeedUpdate = true;
                             }
                         }
 
                         // Reference point
                         if (refvis == '1'){
-                            // Ref Screen (hardcoded take only first line)
-                            // Set the object's markers
-                            ref1_pos = new THREE.Vector3((csvData[6][83] + csvData[6][86]) / 2, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
-                            refmarker1.position.copy(ref1_pos);
-                            ref2_pos = new THREE.Vector3((csvData[6][77] + csvData[6][80]) / 2, (csvData[6][78] + csvData[6][81]) / 2, (csvData[6][79] + csvData[6][82]) / 2);
-                            refmarker2.position.copy(ref2_pos);
-                            ref3_pos = new THREE.Vector3((csvData[6][83] + csvData[6][86]) / 2, ((csvData[6][84] + csvData[6][87]) / 2) + 0.75, (csvData[6][85] + csvData[6][88]) / 2);
-                            refmarker3.position.copy(ref3_pos);
-                            ref4_pos = new THREE.Vector3((csvData[6][77] + csvData[6][80]) / 2, ((csvData[6][78] + csvData[6][81]) / 2) + 0.75, (csvData[6][79] + csvData[6][82]) / 2);
-                            refmarker4.position.copy(ref4_pos);
+                            // Refpoint x, y, z
+                            var refx = (csvData[6][80] + csvData[6][86]) / 2;
+                            var refy = (csvData[6][81] + csvData[6][87]) / 2;
+                            var refz = (csvData[6][82] + csvData[6][88]) / 2;
 
-                            // Connect markers with a line
-                            reflinegeo.vertices[0].set((csvData[6][83] + csvData[6][86]) / 2, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
-                            reflinegeo.vertices[1].set((csvData[6][77] + csvData[6][80]) / 2, (csvData[6][78] + csvData[6][81]) / 2, (csvData[6][79] + csvData[6][82]) / 2);
-                            reflinegeo.vertices[2].set((csvData[6][77] + csvData[6][80]) / 2, ((csvData[6][78] + csvData[6][81]) / 2) + 0.75, (csvData[6][79] + csvData[6][82]) / 2);
-                            reflinegeo.vertices[3].set((csvData[6][83] + csvData[6][86]) / 2, ((csvData[6][84] + csvData[6][87]) / 2) + 0.75, (csvData[6][85] + csvData[6][88]) / 2);
-                            reflinegeo.vertices[4].set((csvData[6][83] + csvData[6][86]) / 2, (csvData[6][84] + csvData[6][87]) / 2, (csvData[6][85] + csvData[6][88]) / 2);
-                            reflinegeo.verticesNeedUpdate = true;
+                            // Refpoint Glasses 1
+                            // Connect glasses marker and screen marker with a line
+                            reflinegeo1.vertices[0].set(refx, refy, refz);
+                            reflinegeo1.vertices[1].set(g1mc_x, g1mc_y, g1mc_z);
+                            reflinegeo1.verticesNeedUpdate = true;
 
-                            // Define plane points
-                            plx1 = (csvData[6][83] + csvData[6][86]) / 2;
-                            ply1 = (csvData[6][84] + csvData[6][87]) / 2;
-                            plz1 = (csvData[6][85] + csvData[6][88]) / 2;
-                            plane1 = [plx1, ply1, plz1];
-                            plane1v = new THREE.Vector3(plx1, ply1, plz1);
-                            plx2 = (csvData[6][77] + csvData[6][80]) / 2;
-                            ply2 = (csvData[6][78] + csvData[6][81]) / 2;
-                            plz2 = (csvData[6][79] + csvData[6][82]) / 2;
-                            plane2 = [plx2, ply2, plz2];
-                            plane2v = new THREE.Vector3(plx2, ply2, plz2);
-                            plx3 = (csvData[6][77] + csvData[6][80]) / 2;
-                            ply3 = ((csvData[6][78] + csvData[6][81]) / 2) + 0.75;
-                            plz3 = (csvData[6][79] + csvData[6][82]) / 2;
-                            plane3 = [plx3, ply3, plz3];
-                            plane3v = new THREE.Vector3(plx3, ply3, plz3);
+                            // Refpoint Glasses 2
+                            // Connect glasses marker and screen marker with a line
+                            reflinegeo2.vertices[0].set(refx, refy, refz);
+                            reflinegeo2.vertices[1].set(g2mc_x, g2mc_y, g2mc_z);
+                            reflinegeo2.verticesNeedUpdate = true;
 
-                            // Find normal vector of the plane
-                            // https://stackoverflow.com/questions/8135260/normal-vector-to-a-plane
-                            // n = (p2 - p1) ^ (p3 - p1)
-                            pln1 = new THREE.Vector3();
-                            pln1 = plane2v;
-                            pln1.sub(plane1v);
-                            pln2 = new THREE.Vector3();
-                            pln2 = plane3v;
-                            pln2.sub(plane1v);
-                            pln = math.cross([pln1.x, pln1.y, pln1.z], [pln2.x, pln2.y, pln2.z]);
-                            plnv = new THREE.Vector3(pln[0], pln[1], pln[2]);
-                            plnv.normalize();
-
-                            // Calculate point projection
-                            // https://stackoverflow.com/questions/8942950/how-do-i-find-the-orthogonal-projection-of-a-point-onto-a-plane
-                            // The projection of a point q = (x, y, z) onto a plane given by a point p = (a, b, c) and a normal n = (d, e, f) is
-                            // q_proj = q - dot(q - p, n) * n
-                            // This calculation assumes that n is a unit vector
-
-                            // Define points
-                            point_glasses = new THREE.Vector3(g1mc_x, g1mc_y, g1mc_z);
-                            point_plane = new THREE.Vector3(plx1, ply1, plz1);
-                            point_glasses_plane = new THREE.Vector3();
-                            point_glasses_plane.subVectors(point_glasses, point_plane);
-
-                            point_glasses_dot = math.dot([point_glasses_plane.x, point_glasses_plane.y, point_glasses_plane.z], [plnv.x, plnv.y, plnv.z]);
-                            point_glasses_final = new THREE.Vector3();
-                            point_glasses_final = plnv;
-                            point_glasses_final.multiplyScalar(point_glasses_dot);
-
-                            point_proj = new THREE.Vector3();
-                            point_proj.subVectors(point_glasses, point_glasses_final);
-
-                            // Reference Screen projection marker
-                            ref_posc = new THREE.Vector3(point_proj.x, point_proj.y, point_proj.z);
-                            refmarkerc.position.copy(ref_posc);
-
-                            reflinegeoc.vertices[0].set(g1mc_x, g1mc_y, g1mc_z);
-                            reflinegeoc.vertices[1].set(point_proj.x, point_proj.y, point_proj.z);
-                            reflinegeoc.verticesNeedUpdate = true;
+                            // Refpoint Glasses 3
+                            // Connect glasses marker and screen marker with a line
+                            reflinegeo3.vertices[0].set(refx, refy, refz);
+                            reflinegeo3.vertices[1].set(g3mc_x, g3mc_y, g3mc_z);
+                            reflinegeo3.verticesNeedUpdate = true;
                         }
 
                         // Calculate angles
                         if (refvis == '1'){
                             // Glasses 1
-                            // Refpoint x, y, z is point_proj
-                            // Plane coefficients are: -0.70463175x + 0y + 0.00159225z = 0.15023723114438
-                            // http://keisan.casio.com/exec/system/1223596129
-                            // http://mathjs.org/docs/reference/functions/intersect.html
-
-                            // Find intersection point for headpose
-                            intersectedhead = math.intersect([g1mc_x, g1mc_y, g1mc_z], [csvData[index_frame][g1hpx], csvData[index_frame][g1hpx+1], csvData[index_frame][g1hpx+2]], [-0.70463175, 0, 0.00159225, 0.15023723114438]);
-
-                            // Reference Screen head interesection marker
-                            headref_pos = new THREE.Vector3(intersectedhead[0], intersectedhead[1], intersectedhead[2]);
-                            headrefmarker.position.copy(headref_pos);
-
-                            // Find intersection point for gaze
-                            gix = csvData[index_frame][g1gp3x];
-                            if (!gix) {gix = 0;}
-                            giy = csvData[index_frame][g1gp3x+1];
-                            if (!giy) {giy = 0;}
-                            giz = csvData[index_frame][g1gp3x+2];
-                            if (!giz) {giz = 0;}
-                            intersectedgaze = math.intersect([g1mc_x, g1mc_y, g1mc_z], [gix, giy, giz], [-0.70463175, 0, 0.00159225, 0.15023723114438]);
-
-                            // Reference Screen gaze interesection marker
-                            gazeref_pos = new THREE.Vector3(intersectedgaze[0], intersectedgaze[1], intersectedgaze[2]);
-                            gazerefmarker.position.copy(gazeref_pos);
-
-                            // Reference Screen head to proj interesection marker
-                            // Take the mid of the x points, the point_proj y and the intersected z
-                            headprojx = (point_proj.x + intersectedhead[0]) / 2;
-                            headprojy = point_proj.y;
-                            headprojz = intersectedhead[2];
-                            headprojref_pos = new THREE.Vector3(headprojx, headprojy, headprojz);
-                            headprojrefmarker.position.copy(headprojref_pos);
-
-                            // Reference Screen gaze to proj interesection marker
-                            // Take the mid of the x points, the point_proj y and the intersected z
-                            gazeprojx = (point_proj.x + intersectedgaze[0]) / 2;
-                            gazeprojy = point_proj.y;
-                            gazeprojz = intersectedgaze[2];
-                            gazeprojref_pos = new THREE.Vector3(gazeprojx, gazeprojy, gazeprojz);
-                            gazeprojrefmarker.position.copy(gazeprojref_pos);
-
-                            // Calculate angles
                             // Vector glasses to refpoint
-                            vgr1 = [point_proj.x - g1mc_x, point_proj.y - g1mc_y, point_proj.z - g1mc_z];
+                            vgr1 = [refx - g1mc_x, refy - g1mc_y, refz - g1mc_z];
                             // The dot product of vgr and vgh is a function of the cosine of the angle between them
                             // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
                             vgr1mag = Math.sqrt((vgr1[0] * vgr1[0]) + (vgr1[1] * vgr1[1]) + (vgr1[2] * vgr1[2]));
                             vgr1norm = [vgr1[0] / vgr1mag, vgr1[1] / vgr1mag, vgr1[2] / vgr1mag];
 
-                            // Head pose to reference point horizontal
-                            // Vector glasses to head pose proj
-                            vgh1 = [headprojx - g1mc_x, headprojy - g1mc_y, headprojz - g1mc_z];
+                            // Head pose to reference point
+                            // Head pose x, y, z
+                            var hp1x = csvData[index_frame][g1hpx];
+                            var hp1y = csvData[index_frame][g1hpx+1];
+                            var hp1z = csvData[index_frame][g1hpx+2];
+                            // Vector glasses to head pose
+                            vgh1 = [hp1x - g1mc_x, hp1y - g1mc_y, hp1z - g1mc_z];
                             // The dot product of vgr and vgh is a function of the cosine of the angle between them
                             // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
                             vgh1mag = Math.sqrt((vgh1[0] * vgh1[0]) + (vgh1[1] * vgh1[1]) + (vgh1[2] * vgh1[2]));
@@ -855,13 +763,17 @@ render = function(results) {
                             // Then calculate the dot product
                             resh1 = (vgr1norm[0] * vgh1norm[0]) + (vgr1norm[1] * vgh1norm[1]) + (vgr1norm[2] * vgh1norm[2]);
                             // Recover the angle
-                            anglehh1 = Math.acos(resh1);
+                            angleh1 = Math.acos(resh1);
                             // Angle in degrees
-                            anglehh1deg = anglehh1 * (180 / Math.PI);
+                            angleh1deg = angleh1 * (180 / Math.PI);
 
                             // Gaze to reference point
-                            // Vector glasses to gazeproj
-                            vgg1 = [gazeprojx - g1mc_x, gazeprojy - g1mc_y, gazeprojz - g1mc_z];
+                            // Gaze x, y, z
+                            var gr1x = csvData[index_frame][g1gp3x];
+                            var gr1y = csvData[index_frame][g1gp3x+1];
+                            var gr1z = csvData[index_frame][g1gp3x+2];
+                            // Vector glasses to gp3
+                            vgg1 = [gr1x - g1mc_x, gr1y - g1mc_y, gr1z - g1mc_z];
                             // The dot product of vgr and vgh is a function of the cosine of the angle between them
                             // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
                             vgg1mag = Math.sqrt((vgg1[0] * vgg1[0]) + (vgg1[1] * vgg1[1]) + (vgg1[2] * vgg1[2]));
@@ -869,58 +781,12 @@ render = function(results) {
                             // Then calculate the dot product
                             resg1 = (vgr1norm[0] * vgg1norm[0]) + (vgr1norm[1] * vgg1norm[1]) + (vgr1norm[2] * vgg1norm[2]);
                             // Recover the angle
-                            anglegh1 = Math.acos(resg1);
+                            angleg1 = Math.acos(resg1);
                             // Angle in degrees
-                            anglegh1deg = anglegh1 * (180 / Math.PI);
+                            angleg1deg = angleg1 * (180 / Math.PI);
 
-                            // Vector glasses to headrefpoint
-                            vgr1v = [headprojx - g1mc_x, headprojy - g1mc_y, headprojz - g1mc_z];
-                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
-                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
-                            vgr1vmag = Math.sqrt((vgr1v[0] * vgr1v[0]) + (vgr1v[1] * vgr1v[1]) + (vgr1v[2] * vgr1v[2]));
-                            vgr1vnorm = [vgr1v[0] / vgr1vmag, vgr1v[1] / vgr1vmag, vgr1v[2] / vgr1vmag];
-
-                            // Head pose to reference point vertical
-                            // Vector glasses to head pose intersected
-                            vgh1v = [intersectedhead[0] - g1mc_x, intersectedhead[1] - g1mc_y, intersectedhead[2] - g1mc_z];
-                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
-                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
-                            vgh1vmag = Math.sqrt((vgh1v[0] * vgh1v[0]) + (vgh1v[1] * vgh1v[1]) + (vgh1v[2] * vgh1v[2]));
-                            vgh1vnorm = [vgh1v[0] / vgh1vmag, vgh1v[1] / vgh1vmag, vgh1v[2] / vgh1vmag];
-                            // Then calculate the dot product
-                            resh1v = (vgr1vnorm[0] * vgh1vnorm[0]) + (vgr1vnorm[1] * vgh1vnorm[1]) + (vgr1vnorm[2] * vgh1vnorm[2]);
-                            // Recover the angle
-                            anglehv1 = Math.acos(resh1v);
-                            // Angle in degrees
-                            anglehv1deg = anglehv1 * (180 / Math.PI);
-
-                            // Vector glasses to gazerefpoint
-                            vgr1gv = [gazeprojx - g1mc_x, gazeprojy - g1mc_y, gazeprojz - g1mc_z];
-                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
-                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
-                            vgr1gvmag = Math.sqrt((vgr1gv[0] * vgr1gv[0]) + (vgr1gv[1] * vgr1gv[1]) + (vgr1gv[2] * vgr1gv[2]));
-                            vgr1gvnorm = [vgr1gv[0] / vgr1gvmag, vgr1gv[1] / vgr1gvmag, vgr1gv[2] / vgr1gvmag];
-
-                            // Gaze to reference point vertical
-                            // Vector glasses to gaze intersected
-                            vgg1v = [intersectedgaze[0] - g1mc_x, intersectedgaze[1] - g1mc_y, intersectedgaze[2] - g1mc_z];
-                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
-                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
-                            vgg1vmag = Math.sqrt((vgg1v[0] * vgg1v[0]) + (vgg1v[1] * vgg1v[1]) + (vgg1v[2] * vgg1v[2]));
-                            vgg1vnorm = [vgg1v[0] / vgg1vmag, vgg1v[1] / vgg1vmag, vgg1v[2] / vgg1vmag];
-                            // Then calculate the dot product
-                            resg1v = (vgr1gvnorm[0] * vgg1vnorm[0]) + (vgr1gvnorm[1] * vgg1vnorm[1]) + (vgr1gvnorm[2] * vgg1vnorm[2]);
-                            // Recover the angle
-                            anglegv1 = Math.acos(resg1v);
-                            // Angle in degrees
-                            anglegv1deg = anglegv1 * (180 / Math.PI);
-
-                            console.log("Head pose 1 horizontal angle: ", anglehh1deg);
-                            console.log("Gaze 1 horizontal angle: ", anglegh1deg);
-                            console.log("----------------------------------------------------");
-                            console.log("Head pose 1 vertical angle: ", anglehv1deg);
-                            console.log("Gaze 1 vertical angle: ", anglegv1deg);
-                            console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                            console.log("Head pose 1 angle: ", angleh1deg);
+                            console.log("Gaze 1 angle: ", angleg1deg);
                         }
                     }
                     // Incrementing to next frame (skipping one)
