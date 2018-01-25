@@ -742,14 +742,14 @@ render = function(results) {
                         // Calculate angles
                         if (refvis == '1'){
                             // Glasses 1
-                            // Vector glasses to refpoint
+                            // Vector glasses 1 to refpoint
                             vgr1 = [refx - g1mc_x, refy - g1mc_y, refz - g1mc_z];
                             // The dot product of vgr and vgh is a function of the cosine of the angle between them
                             // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
                             vgr1mag = Math.sqrt((vgr1[0] * vgr1[0]) + (vgr1[1] * vgr1[1]) + (vgr1[2] * vgr1[2]));
                             vgr1norm = [vgr1[0] / vgr1mag, vgr1[1] / vgr1mag, vgr1[2] / vgr1mag];
 
-                            // Head pose to reference point
+                            // Head pose 1 to reference point
                             // Head pose x, y, z
                             var hp1x = csvData[index_frame][g1hpx];
                             var hp1y = csvData[index_frame][g1hpx+1];
@@ -767,7 +767,7 @@ render = function(results) {
                             // Angle in degrees
                             angleh1deg = angleh1 * (180 / Math.PI);
 
-                            // Gaze to reference point
+                            // Gaze 1 to reference point
                             // Gaze x, y, z
                             var gr1x = csvData[index_frame][g1gp3x];
                             var gr1y = csvData[index_frame][g1gp3x+1];
@@ -785,8 +785,102 @@ render = function(results) {
                             // Angle in degrees
                             angleg1deg = angleg1 * (180 / Math.PI);
 
+
+                            // Glasses 2
+                            // Vector glasses 2 to refpoint
+                            vgr2 = [refx - g2mc_x, refy - g2mc_y, refz - g2mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgr2mag = Math.sqrt((vgr2[0] * vgr2[0]) + (vgr2[1] * vgr2[1]) + (vgr2[2] * vgr2[2]));
+                            vgr2norm = [vgr2[0] / vgr2mag, vgr2[1] / vgr2mag, vgr2[2] / vgr2mag];
+
+                            // Head pose 2 to reference point
+                            // Head pose x, y, z
+                            var hp2x = csvData[index_frame][g2hpx];
+                            var hp2y = csvData[index_frame][g2hpx+1];
+                            var hp2z = csvData[index_frame][g2hpx+2];
+                            // Vector glasses to head pose
+                            vgh2 = [hp2x - g2mc_x, hp2y - g2mc_y, hp2z - g2mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgh2mag = Math.sqrt((vgh2[0] * vgh2[0]) + (vgh2[1] * vgh2[1]) + (vgh2[2] * vgh2[2]));
+                            vgh2norm = [vgh2[0] / vgh2mag, vgh2[1] / vgh2mag, vgh2[2] / vgh2mag];
+                            // Then calculate the dot product
+                            resh2 = (vgr2norm[0] * vgh2norm[0]) + (vgr2norm[1] * vgh2norm[1]) + (vgr2norm[2] * vgh2norm[2]);
+                            // Recover the angle
+                            angleh2 = Math.acos(resh2);
+                            // Angle in degrees
+                            angleh2deg = angleh2 * (180 / Math.PI);
+
+                            // Gaze 2 to reference point
+                            // Gaze x, y, z
+                            var gr2x = csvData[index_frame][g2gp3x];
+                            var gr2y = csvData[index_frame][g2gp3x+1];
+                            var gr2z = csvData[index_frame][g2gp3x+2];
+                            // Vector glasses to gp3
+                            vgg2 = [gr2x - g2mc_x, gr2y - g2mc_y, gr2z - g2mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgg2mag = Math.sqrt((vgg2[0] * vgg2[0]) + (vgg2[1] * vgg2[1]) + (vgg2[2] * vgg2[2]));
+                            vgg2norm = [vgg2[0] / vgg2mag, vgg2[1] / vgg2mag, vgg2[2] / vgg2mag];
+                            // Then calculate the dot product
+                            resg2 = (vgr2norm[0] * vgg2norm[0]) + (vgr2norm[1] * vgg2norm[1]) + (vgr2norm[2] * vgg2norm[2]);
+                            // Recover the angle
+                            angleg2 = Math.acos(resg2);
+                            // Angle in degrees
+                            angleg2deg = angleg2 * (180 / Math.PI);
+
+
+                            // Glasses 3
+                            // Vector glasses 3 to refpoint
+                            vgr3 = [refx - g3mc_x, refy - g3mc_y, refz - g3mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgr3mag = Math.sqrt((vgr3[0] * vgr3[0]) + (vgr3[1] * vgr3[1]) + (vgr3[2] * vgr3[2]));
+                            vgr3norm = [vgr3[0] / vgr3mag, vgr3[1] / vgr3mag, vgr3[2] / vgr3mag];
+
+                            // Head pose 3 to reference point
+                            // Head pose x, y, z
+                            var hp3x = csvData[index_frame][g3hpx];
+                            var hp3y = csvData[index_frame][g3hpx+1];
+                            var hp3z = csvData[index_frame][g3hpx+2];
+                            // Vector glasses to head pose
+                            vgh3 = [hp3x - g3mc_x, hp3y - g3mc_y, hp3z - g3mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgh3mag = Math.sqrt((vgh3[0] * vgh3[0]) + (vgh3[1] * vgh3[1]) + (vgh3[2] * vgh3[2]));
+                            vgh3norm = [vgh3[0] / vgh3mag, vgh3[1] / vgh3mag, vgh3[2] / vgh3mag];
+                            // Then calculate the dot product
+                            resh3 = (vgr3norm[0] * vgh3norm[0]) + (vgr3norm[1] * vgh3norm[1]) + (vgr3norm[2] * vgh3norm[2]);
+                            // Recover the angle
+                            angleh3 = Math.acos(resh3);
+                            // Angle in degrees
+                            angleh3deg = angleh3 * (180 / Math.PI);
+
+                            // Gaze 3 to reference point
+                            // Gaze x, y, z
+                            var gr3x = csvData[index_frame][g3gp3x];
+                            var gr3y = csvData[index_frame][g3gp3x+1];
+                            var gr3z = csvData[index_frame][g3gp3x+2];
+                            // Vector glasses to gp3
+                            vgg3 = [gr3x - g3mc_x, gr3y - g3mc_y, gr3z - g3mc_z];
+                            // The dot product of vgr and vgh is a function of the cosine of the angle between them
+                            // (it's scaled by the product of their magnitudes). So first normalise vgr and vgh
+                            vgg3mag = Math.sqrt((vgg3[0] * vgg3[0]) + (vgg3[1] * vgg3[1]) + (vgg3[2] * vgg3[2]));
+                            vgg3norm = [vgg3[0] / vgg3mag, vgg3[1] / vgg3mag, vgg3[2] / vgg3mag];
+                            // Then calculate the dot product
+                            resg3 = (vgr3norm[0] * vgg3norm[0]) + (vgr3norm[1] * vgg3norm[1]) + (vgr3norm[2] * vgg3norm[2]);
+                            // Recover the angle
+                            angleg3 = Math.acos(resg3);
+                            // Angle in degrees
+                            angleg3deg = angleg3 * (180 / Math.PI);
+
                             console.log("Head pose 1 angle: ", angleh1deg);
                             console.log("Gaze 1 angle: ", angleg1deg);
+                            console.log("Head pose 2 angle: ", angleh2deg);
+                            console.log("Gaze 2 angle: ", angleg2deg);
+                            console.log("Head pose 3 angle: ", angleh3deg);
+                            console.log("Gaze 3 angle: ", angleg3deg);
                         }
                     }
                     // Incrementing to next frame (skipping one)
