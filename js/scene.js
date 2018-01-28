@@ -451,7 +451,7 @@ initScene = function() {
     }
 
     // Ref point
-    if (refvis == '1'){
+    if (refvis != '0'){
         // Ref point line
         var reflinematerial = new THREE.LineBasicMaterial({
             color: 0xFFCC00,

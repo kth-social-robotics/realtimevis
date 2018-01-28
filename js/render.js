@@ -245,6 +245,17 @@ render = function(results) {
 
                                     scene.remove(img[l]);
                                     img[l].position.set(image_xapp, 0.001, image_yapp);
+
+                                    // Update referent object points
+                                    if (appvis == 'yes' && refvis != '0'){
+                                        // Get object ID
+                                        if (csvAppData[app_frame-2][l] == refvis) {
+                                            var refx = img[l].position.x;
+                                            var refy = img[l].position.y;
+                                            var refz = img[l].position.z;
+                                        }
+                                    }
+
                                     img[l].rotation.y = 1.57;
                                     scene.add(img[l]);
                                 }
@@ -253,6 +264,13 @@ render = function(results) {
                         }
                         else {
                             scene.add(img1);
+                        }
+
+                        if (cur_screen != "flat" && cur_screen != "black" && refvis != '0' && appvis == 'yes') {
+                            // Get values from furniture data and convert to room coordinates
+                            var refx = ((((53 * csvFurnitureData[refvis][9]) / 720) - 53) / 100) + 0.051;
+                            var refy = 0.001;
+                            var refz = ((94 - ((94 * csvFurnitureData[refvis][8]) / 1280)) / 100) - 0.049;
                         }
 
                         // Tobii Glasses 1
@@ -714,11 +732,26 @@ render = function(results) {
                         }
 
                         // Reference point
-                        if (refvis == '1'){
-                            // Refpoint x, y, z
-                            var refx = (csvData[6][80] + csvData[6][86]) / 2;
-                            var refy = (csvData[6][81] + csvData[6][87]) / 2;
-                            var refz = (csvData[6][82] + csvData[6][88]) / 2;
+                        if (refvis != '0'){
+                            // Update reference point if no_app and to a human
+                            if (refvis != '0' && appvis == 'no') {
+                                // Refpoint x, y, z
+                                if (refvis == 'm') {
+                                    var refx = g1mc_x;
+                                    var refy = g1mc_y;
+                                    var refz = g1mc_z;
+                                }
+                                else if (refvis == 'p1') {
+                                    var refx = g3mc_x;
+                                    var refy = g3mc_y;
+                                    var refz = g3mc_z;
+                                }
+                                else if (refvis == 'p2') {
+                                    var refx = g2mc_x;
+                                    var refy = g2mc_y;
+                                    var refz = g2mc_z;
+                                }
+                            }
 
                             // Refpoint Glasses 1
                             // Connect glasses marker and screen marker with a line
@@ -740,7 +773,7 @@ render = function(results) {
                         }
 
                         // Calculate angles
-                        if (refvis == '1'){
+                        if (refvis != '0'){
                             // Glasses 1
                             // Vector glasses 1 to refpoint
                             vgr1 = [refx - g1mc_x, refy - g1mc_y, refz - g1mc_z];
@@ -875,12 +908,13 @@ render = function(results) {
                             // Angle in degrees
                             angleg3deg = angleg3 * (180 / Math.PI);
 
-                            console.log("Head pose 1 angle: ", angleh1deg);
-                            console.log("Gaze 1 angle: ", angleg1deg);
-                            console.log("Head pose 2 angle: ", angleh2deg);
-                            console.log("Gaze 2 angle: ", angleg2deg);
-                            console.log("Head pose 3 angle: ", angleh3deg);
-                            console.log("Gaze 3 angle: ", angleg3deg);
+                            console.log("-------------------------------------");
+                            console.log("Head pose 1 (M) angle: ", angleh1deg);
+                            console.log("Gaze 1 (M) angle: ", angleg1deg);
+                            console.log("Head pose 2 (P2) angle: ", angleh2deg);
+                            console.log("Gaze 2 (P2) angle: ", angleg2deg);
+                            console.log("Head pose 3 (P1) angle: ", angleh3deg);
+                            console.log("Gaze 3 (P1) angle: ", angleg3deg);
                         }
                     }
                     // Incrementing to next frame (skipping one)

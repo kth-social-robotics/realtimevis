@@ -232,7 +232,7 @@ if (headposevis == 'yes'){
 }
 
 // Refpoint marker lines
-if (refvis == '1'){
+if (refvis != '0'){
     var reflinegeo1;
     var reflinegeo2;
     var reflinegeo3;
