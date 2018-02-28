@@ -20,9 +20,9 @@ var glasses_num = 2;
 // Number of gloves
 var gloves_num = 1;
 // Number of targets
-var targets_num = 5;
+var targets_num = 14;
 // Number of tables
-var tables_num = 2;
+var tables_num = 1;
 
 // Glasses
 var gmarker1 = [];
@@ -122,7 +122,7 @@ var ghlinel = [];
 var ghlinegeor = [];
 var ghliner = [];
 
-for (var i = 1; i <= gloves_num; i++) {
+for (var i = 2; i <= gloves_num + 1; i++) {
     // Left hand
     hlmarker1[i] = null;
     hlmarker2[i] = null;

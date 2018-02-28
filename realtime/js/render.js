@@ -108,7 +108,7 @@ render = function(results) {
                 }
 
                 // Hand L
-                for (var i = 1; i <= gloves_num; i++) {
+                for (var i = 2; i <= gloves_num + 1; i++) {
                     if (csvData['mocap_hand' + i + 'l']) {
                         // Set the object's markers
                         hlm1_pos[i] = new THREE.Vector3(csvData['mocap_hand' + i + 'l']['marker1']['x'], csvData['mocap_hand' + i + 'l']['marker1']['y'], csvData['mocap_hand' + i + 'l']['marker1']['z']);
@@ -143,7 +143,7 @@ render = function(results) {
                 }
 
                 // Hand R
-                for (var i = 1; i <= gloves_num; i++) {
+                for (var i = 2; i <= gloves_num + 1; i++) {
                     if (csvData['mocap_hand' + i + 'r']) {
                         // Set the object's markers
                         hrm1_pos[i] = new THREE.Vector3(csvData['mocap_hand' + i + 'r']['marker1']['x'], csvData['mocap_hand' + i + 'r']['marker1']['y'], csvData['mocap_hand' + i + 'r']['marker1']['z']);
