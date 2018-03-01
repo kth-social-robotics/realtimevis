@@ -264,6 +264,22 @@ var cmc_x, cmc_y, cmc_z;
 var clinegeo;
 var cline;
 
+// Screen
+var smarker1 = null;
+var smarker2 = null;
+var smarker3 = null;
+var smarker4 = null;
+var smarkerc = null;
+
+// Screen helper
+var sm1_pos, sm2_pos, sm3_pos, sm4_pos;
+var smc_pos;
+var smc_x, smc_y, smc_z;
+
+// Screen Marker Lines
+var slinegeo;
+var sline;
+
 // Floor
 var floorMat;
 

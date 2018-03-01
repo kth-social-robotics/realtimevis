@@ -378,6 +378,35 @@ initScene = function() {
     cline = new THREE.Line(clinegeo, clinematerial);
     scene.add(cline);
 
+    // Screen markers
+    var dotGeometry = new THREE.Geometry();
+    dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
+    var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
+    smarker1 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(smarker1);
+    smarker2 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(smarker2);
+    smarker3 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(smarker3);
+    smarker4 = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(smarker4);
+    smarkerc = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(smarkerc);
+
+    // Screen marker line
+    var slinematerial = new THREE.LineBasicMaterial({
+        color: 0x000000,
+        linewidth: 3
+    });
+    slinegeo = new THREE.Geometry();
+    slinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    slinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    slinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    slinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    slinegeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    sline = new THREE.Line(slinegeo, slinematerial);
+    scene.add(sline);
+
     // Camera movement
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 0, 0);

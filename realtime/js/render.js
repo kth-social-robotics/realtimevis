@@ -292,6 +292,34 @@ render = function(results) {
                     clinegeo.vertices[4].set(csvData['mocap_calibration']['marker1']['x'], csvData['mocap_calibration']['marker1']['y'], csvData['mocap_calibration']['marker1']['z']);
                     clinegeo.verticesNeedUpdate = true;
                 }
+
+                // Screen
+                if (csvData['mocap_screen']) {
+                    // Set the object's markers
+                    sm1_pos = new THREE.Vector3(csvData['mocap_screen']['marker1']['x'], csvData['mocap_screen']['marker1']['y'], csvData['mocap_screen']['marker1']['z']);
+                    smarker1.position.copy(sm1_pos);
+                    sm2_pos = new THREE.Vector3(csvData['mocap_screen']['marker2']['x'], csvData['mocap_screen']['marker2']['y'], csvData['mocap_screen']['marker2']['z']);
+                    smarker2.position.copy(sm2_pos);
+                    sm3_pos = new THREE.Vector3(csvData['mocap_screen']['marker3']['x'], csvData['mocap_screen']['marker3']['y'], csvData['mocap_screen']['marker3']['z']);
+                    smarker3.position.copy(sm3_pos);
+                    sm4_pos = new THREE.Vector3(csvData['mocap_screen']['marker4']['x'], csvData['mocap_screen']['marker4']['y'], csvData['mocap_screen']['marker4']['z']);
+                    smarker4.position.copy(sm4_pos);
+
+                    // Get mid point
+                    smc_x = csvData['mocap_screen']['position']['x'];
+                    smc_y = csvData['mocap_screen']['position']['y'];
+                    smc_z = csvData['mocap_screen']['position']['z'];
+                    smc_pos = new THREE.Vector3(smc_x, smc_y, smc_z);
+                    smarkerc.position.copy(smc_pos);
+
+                    // Connect markers with a line
+                    slinegeo.vertices[0].set(csvData['mocap_screen']['marker1']['x'], csvData['mocap_screen']['marker1']['y'], csvData['mocap_screen']['marker1']['z']);
+                    slinegeo.vertices[1].set(csvData['mocap_screen']['marker2']['x'], csvData['mocap_screen']['marker2']['y'], csvData['mocap_screen']['marker2']['z']);
+                    slinegeo.vertices[2].set(csvData['mocap_screen']['marker4']['x'], csvData['mocap_screen']['marker4']['y'], csvData['mocap_screen']['marker4']['z']);
+                    slinegeo.vertices[3].set(csvData['mocap_screen']['marker3']['x'], csvData['mocap_screen']['marker3']['y'], csvData['mocap_screen']['marker3']['z']);
+                    slinegeo.vertices[4].set(csvData['mocap_screen']['marker1']['x'], csvData['mocap_screen']['marker1']['y'], csvData['mocap_screen']['marker1']['z']);
+                    slinegeo.verticesNeedUpdate = true;
+                }
             }
 
             // Render the scene
