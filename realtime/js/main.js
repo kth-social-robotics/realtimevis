@@ -18,7 +18,7 @@ var csvData = null;
 // Number of glasses
 var glasses_num = 2;
 // Number of gloves
-var gloves_num = 1;
+var gloves_num = 2;
 // Number of targets
 var targets_num = 14;
 // Number of tables
@@ -121,8 +121,12 @@ var ghlinegeol = [];
 var ghlinel = [];
 var ghlinegeor = [];
 var ghliner = [];
+var gplinegeol = [];
+var gplinel = [];
+var gplinegeor = [];
+var gpliner = [];
 
-for (var i = 2; i <= gloves_num + 1; i++) {
+for (var i = 1; i <= gloves_num; i++) {
     // Left hand
     hlmarker1[i] = null;
     hlmarker2[i] = null;

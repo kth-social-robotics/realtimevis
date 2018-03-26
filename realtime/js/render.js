@@ -108,7 +108,7 @@ render = function(results) {
                 }
 
                 // Hand L
-                for (var i = 2; i <= gloves_num + 1; i++) {
+                for (var i = 1; i <= gloves_num; i++) {
                     if (csvData['mocap_hand' + i + 'l']) {
                         // Set the object's markers
                         hlm1_pos[i] = new THREE.Vector3(csvData['mocap_hand' + i + 'l']['marker1']['x'], csvData['mocap_hand' + i + 'l']['marker1']['y'], csvData['mocap_hand' + i + 'l']['marker1']['z']);
@@ -139,11 +139,33 @@ render = function(results) {
                         ghlinegeol[i].vertices[0].set(hlmc_x[i], hlmc_y[i], hlmc_z[i]);
                         ghlinegeol[i].vertices[1].set(gmc_x[i], gmc_y[i], gmc_z[i]);
                         ghlinegeol[i].verticesNeedUpdate = true;
+
+                        // Connect pointing markers and extend with a line
+                        // UPDATE MARKERS FOR GLOVES HERE
+                        if (i == 1) {
+                            x1 = csvData['mocap_hand' + i + 'l']['marker3']['x'];
+                            y1 = csvData['mocap_hand' + i + 'l']['marker3']['y'];
+                            z1 = csvData['mocap_hand' + i + 'l']['marker3']['z'];
+                            x2 = csvData['mocap_hand' + i + 'l']['marker4']['x'];
+                            y2 = csvData['mocap_hand' + i + 'l']['marker4']['y'];
+                            z2 = csvData['mocap_hand' + i + 'l']['marker4']['z'];
+                        }
+                        else if (i == 2) {
+                            x1 = csvData['mocap_hand' + i + 'l']['marker4']['x'];
+                            y1 = csvData['mocap_hand' + i + 'l']['marker4']['y'];
+                            z1 = csvData['mocap_hand' + i + 'l']['marker4']['z'];
+                            x2 = csvData['mocap_hand' + i + 'l']['marker2']['x'];
+                            y2 = csvData['mocap_hand' + i + 'l']['marker2']['y'];
+                            z2 = csvData['mocap_hand' + i + 'l']['marker2']['z'];
+                        }
+                        gplinegeol[i].vertices[0].set(x1, y1, z1);
+                        gplinegeol[i].vertices[1].set(x2 + 15 * (x2 - x1), y2 + 15 * (y2 - y1), z2 + 15 * (z2 - z1));
+                        gplinegeol[i].verticesNeedUpdate = true;
                     }
                 }
 
                 // Hand R
-                for (var i = 2; i <= gloves_num + 1; i++) {
+                for (var i = 1; i <= gloves_num; i++) {
                     if (csvData['mocap_hand' + i + 'r']) {
                         // Set the object's markers
                         hrm1_pos[i] = new THREE.Vector3(csvData['mocap_hand' + i + 'r']['marker1']['x'], csvData['mocap_hand' + i + 'r']['marker1']['y'], csvData['mocap_hand' + i + 'r']['marker1']['z']);
@@ -174,6 +196,28 @@ render = function(results) {
                         ghlinegeor[i].vertices[0].set(hrmc_x[i], hrmc_y[i], hrmc_z[i]);
                         ghlinegeor[i].vertices[1].set(gmc_x[i], gmc_y[i], gmc_z[i]);
                         ghlinegeor[i].verticesNeedUpdate = true;
+
+                        // Connect pointing markers and extend with a line
+                        // UPDATE MARKERS FOR GLOVES HERE
+                        if (i == 1) {
+                            x1 = csvData['mocap_hand' + i + 'r']['marker2']['x'];
+                            y1 = csvData['mocap_hand' + i + 'r']['marker2']['y'];
+                            z1 = csvData['mocap_hand' + i + 'r']['marker2']['z'];
+                            x2 = csvData['mocap_hand' + i + 'r']['marker1']['x'];
+                            y2 = csvData['mocap_hand' + i + 'r']['marker1']['y'];
+                            z2 = csvData['mocap_hand' + i + 'r']['marker1']['z'];
+                        }
+                        else if (i == 2) {
+                            x1 = csvData['mocap_hand' + i + 'r']['marker2']['x'];
+                            y1 = csvData['mocap_hand' + i + 'r']['marker2']['y'];
+                            z1 = csvData['mocap_hand' + i + 'r']['marker2']['z'];
+                            x2 = csvData['mocap_hand' + i + 'r']['marker1']['x'];
+                            y2 = csvData['mocap_hand' + i + 'r']['marker1']['y'];
+                            z2 = csvData['mocap_hand' + i + 'r']['marker1']['z'];
+                        }
+                        gplinegeor[i].vertices[0].set(x1, y1, z1);
+                        gplinegeor[i].vertices[1].set(x2 + 15 * (x2 - x1), y2 + 15 * (y2 - y1), z2 + 15 * (z2 - z1));
+                        gplinegeor[i].verticesNeedUpdate = true;
                     }
                 }
 

@@ -166,7 +166,7 @@ initScene = function() {
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    for (var i = 2; i <= gloves_num + 1; i++) {
+    for (var i = 1; i <= gloves_num; i++) {
         hlmarker1[i] = new THREE.Points(dotGeometry, dotMaterial);
         scene.add(hlmarker1[i]);
         hlmarker2[i] = new THREE.Points(dotGeometry, dotMaterial);
@@ -184,7 +184,7 @@ initScene = function() {
         color: 0xFFFFFF,
         linewidth: 3
     });
-    for (var i = 2; i <= gloves_num + 1; i++) {
+    for (var i = 1; i <= gloves_num; i++) {
         hlinegeol[i] = new THREE.Geometry();
         hlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
         hlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
@@ -199,7 +199,7 @@ initScene = function() {
     var dotGeometry = new THREE.Geometry();
     dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     var dotMaterial = new THREE.PointsMaterial({size: 5, sizeAttenuation: false, color: 0xFF3300});
-    for (var i = 2; i <= gloves_num + 1; i++) {
+    for (var i = 1; i <= gloves_num; i++) {
         hrmarker1[i] = new THREE.Points(dotGeometry, dotMaterial);
         scene.add(hrmarker1[i]);
         hrmarker2[i] = new THREE.Points(dotGeometry, dotMaterial);
@@ -217,7 +217,7 @@ initScene = function() {
         color: 0xFFFFFF,
         linewidth: 3
     });
-    for (var i = 2; i <= gloves_num + 1; i++) {
+    for (var i = 1; i <= gloves_num; i++) {
         hlinegeor[i] = new THREE.Geometry();
         hlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
         hlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
@@ -233,7 +233,7 @@ initScene = function() {
         color: 0xFFFFFF,
         linewidth: 3
     });
-    for (var i = 2; i <= gloves_num + 1; i++) {
+    for (var i = 1; i <= gloves_num; i++) {
         ghlinegeol[i] = new THREE.Geometry();
         ghlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
         ghlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
@@ -246,12 +246,38 @@ initScene = function() {
         color: 0xFFFFFF,
         linewidth: 3
     });
-    for (var i = 2; i <= gloves_num + 1; i++) {
+    for (var i = 1; i <= gloves_num; i++) {
         ghlinegeor[i] = new THREE.Geometry();
         ghlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
         ghlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
         ghliner[i] = new THREE.Line(ghlinegeor[i], ghlinematerialr);
         scene.add(ghliner[i]);
+    }
+
+    // Hand L pointing marker line
+    var gplinemateriall = new THREE.LineBasicMaterial({
+        color: 0xFFFFFF,
+        linewidth: 3
+    });
+    for (var i = 1; i <= gloves_num; i++) {
+        gplinegeol[i] = new THREE.Geometry();
+        gplinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        gplinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        gplinel[i] = new THREE.Line(gplinegeol[i], gplinemateriall);
+        scene.add(gplinel[i]);
+    }
+
+    // Hand R pointing marker line
+    var gplinematerialr = new THREE.LineBasicMaterial({
+        color: 0xFFFFFF,
+        linewidth: 3
+    });
+    for (var i = 1; i <= gloves_num; i++) {
+        gplinegeor[i] = new THREE.Geometry();
+        gplinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        gplinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+        gpliner[i] = new THREE.Line(gplinegeor[i], gplinematerialr);
+        scene.add(gpliner[i]);
     }
 
     // Target markers
