@@ -135,10 +135,10 @@ render = function(results) {
                         hlinegeol[i].vertices[4].set(csvData['mocap_hand' + i + 'l']['marker1']['x'], csvData['mocap_hand' + i + 'l']['marker1']['y'], csvData['mocap_hand' + i + 'l']['marker1']['z']);
                         hlinegeol[i].verticesNeedUpdate = true;
 
-                        // Connect glasses and hand1l with a line
-                        ghlinegeol[i].vertices[0].set(hlmc_x[i], hlmc_y[i], hlmc_z[i]);
-                        ghlinegeol[i].vertices[1].set(gmc_x[i], gmc_y[i], gmc_z[i]);
-                        ghlinegeol[i].verticesNeedUpdate = true;
+                        // // Connect glasses and hand1l with a line
+                        // ghlinegeol[i].vertices[0].set(hlmc_x[i], hlmc_y[i], hlmc_z[i]);
+                        // ghlinegeol[i].vertices[1].set(gmc_x[i], gmc_y[i], gmc_z[i]);
+                        // ghlinegeol[i].verticesNeedUpdate = true;
 
                         // Connect pointing markers and extend with a line
                         // UPDATE MARKERS FOR GLOVES HERE
@@ -192,10 +192,10 @@ render = function(results) {
                         hlinegeor[i].vertices[4].set(csvData['mocap_hand' + i + 'r']['marker1']['x'], csvData['mocap_hand' + i + 'r']['marker1']['y'], csvData['mocap_hand' + i + 'r']['marker1']['z']);
                         hlinegeor[i].verticesNeedUpdate = true;
 
-                        // Connect glasses and hand1r with a line
-                        ghlinegeor[i].vertices[0].set(hrmc_x[i], hrmc_y[i], hrmc_z[i]);
-                        ghlinegeor[i].vertices[1].set(gmc_x[i], gmc_y[i], gmc_z[i]);
-                        ghlinegeor[i].verticesNeedUpdate = true;
+                        // // Connect glasses and hand1r with a line
+                        // ghlinegeor[i].vertices[0].set(hrmc_x[i], hrmc_y[i], hrmc_z[i]);
+                        // ghlinegeor[i].vertices[1].set(gmc_x[i], gmc_y[i], gmc_z[i]);
+                        // ghlinegeor[i].verticesNeedUpdate = true;
 
                         // Connect pointing markers and extend with a line
                         // UPDATE MARKERS FOR GLOVES HERE

@@ -159,13 +159,21 @@ for (var i = 1; i <= gloves_num; i++) {
     hlinegeor[i];
     hrline[i];
 
-    // GlassesHand L Marker Lines
-    ghlinegeol[i];
-    ghlinel[i];
+    // // GlassesHand L Marker Lines
+    // ghlinegeol[i];
+    // ghlinel[i];
+    //
+    // // GlassesHand R Marker Lines
+    // ghlinegeor[i];
+    // ghliner[i];
 
-    // GlassesHand R Marker Lines
-    ghlinegeor[i];
-    ghliner[i];
+    // PointHand L Marker Lines
+    gplinegeol[i];
+    gplinel[i];
+
+    // PointHand R Marker Lines
+    gplinegeor[i];
+    gpliner[i];
 }
 
 // Targets

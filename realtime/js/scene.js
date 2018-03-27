@@ -228,31 +228,31 @@ initScene = function() {
         scene.add(hrline[i]);
     }
 
-    // Glasses Hand L marker line
-    var ghlinemateriall = new THREE.LineBasicMaterial({
-        color: 0xFFFFFF,
-        linewidth: 3
-    });
-    for (var i = 1; i <= gloves_num; i++) {
-        ghlinegeol[i] = new THREE.Geometry();
-        ghlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
-        ghlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
-        ghlinel[i] = new THREE.Line(ghlinegeol[i], ghlinemateriall);
-        scene.add(ghlinel[i]);
-    }
+    // // Glasses Hand L marker line
+    // var ghlinemateriall = new THREE.LineBasicMaterial({
+    //     color: 0xFFFFFF,
+    //     linewidth: 3
+    // });
+    // for (var i = 1; i <= gloves_num; i++) {
+    //     ghlinegeol[i] = new THREE.Geometry();
+    //     ghlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+    //     ghlinegeol[i].vertices.push(new THREE.Vector3(0, 0, 0));
+    //     ghlinel[i] = new THREE.Line(ghlinegeol[i], ghlinemateriall);
+    //     scene.add(ghlinel[i]);
+    // }
 
-    // Glasses Hand R marker line
-    var ghlinematerialr = new THREE.LineBasicMaterial({
-        color: 0xFFFFFF,
-        linewidth: 3
-    });
-    for (var i = 1; i <= gloves_num; i++) {
-        ghlinegeor[i] = new THREE.Geometry();
-        ghlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
-        ghlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
-        ghliner[i] = new THREE.Line(ghlinegeor[i], ghlinematerialr);
-        scene.add(ghliner[i]);
-    }
+    // // Glasses Hand R marker line
+    // var ghlinematerialr = new THREE.LineBasicMaterial({
+    //     color: 0xFFFFFF,
+    //     linewidth: 3
+    // });
+    // for (var i = 1; i <= gloves_num; i++) {
+    //     ghlinegeor[i] = new THREE.Geometry();
+    //     ghlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+    //     ghlinegeor[i].vertices.push(new THREE.Vector3(0, 0, 0));
+    //     ghliner[i] = new THREE.Line(ghlinegeor[i], ghlinematerialr);
+    //     scene.add(ghliner[i]);
+    // }
 
     // Hand L pointing marker line
     var gplinemateriall = new THREE.LineBasicMaterial({
