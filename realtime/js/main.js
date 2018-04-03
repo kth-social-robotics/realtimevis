@@ -16,7 +16,7 @@ var csvData = null;
 
 // Object definition
 // Number of glasses
-var glasses_num = 2;
+var glasses_num = 3;
 // Number of gloves
 var gloves_num = 2;
 // Number of targets
